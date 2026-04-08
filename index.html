@@ -475,6 +475,17 @@
 <script>
   const apiUrl = 'https://script.google.com/macros/s/AKfycby-fMP_6eco_zZIdYcaw9xGVzet4BBC_RVn0xZB3GJ3tE2utHk6c2cvXOL7_Cv6oQL9Mw/exec';
 
+  const EMAILS_RUTINAS = [
+  'diego.sanchez@pilaresca.com.ar',
+  'dariogamba.pilaresca@gmail.com',
+  'francopaez.pilaresca@gmail.com',
+  'raul.ledesma@pilaresca.com.ar',
+  'hugoescobar.pilaresca@gmail.com',
+  'hectoralegre.pilaresca@gmail.com',
+  'rutinas.pilaresca@gmail.com',
+  'tecnicos.pilaresca@gmail.com'
+];
+
   const LINEAS = {
     "Línea 1": [{ nombre: "Amasadora", checks: ["El equipo no funciona correctamente", "Se denotan movimientos, roces y/o ruidos extraños", "El equipo precisa lubricación", "El motor físicamente se encuentra sucio", "Las botoneras/pulsadores/selectoras no funcionan correctamente", "El caudalímetro presenta alguna pérdida", "Las cañerías de materia harina/azúcar presentan pérdidas", "El FRL precisa purgarse, tiene pérdidas y/o precisa cambio de filtro o manómetro", "Los carros se encuentran con filos/rebarbas peligrosos para el usuario", "El reductor de la amasadora no posee aceite y/o presenta pérdidas", "El tablero no se encuentra cerrado", "Se perciben ruidos extraños del tablero", "Otros"] }, { nombre: "Cortadora", checks: ["El equipo no funciona correctamente", "No se denotan movimientos, roces y/o ruidos extraños", "El motor se encuentra físicamente sucio", "No se encuentran todas sus protecciones colocadas", "La lona no se encuentra en buen estado", "La cortadora de alambre precisa lubricación", "Las correas del motor no se encuentran en buen estado", "La polea y bujes presentan huelgo y/o desgaste", "El tablero no se encuentra cerrado", "Se perciben ruidos extraños del tablero", "Las botoneras/pulsadores/selectoras funcionan correctamente", "Otros"] }, { nombre: "Dulcera", checks: ["El equipo está funcionando correctamente", "El equipo presenta pérdidas", "Las mangueras se encuentran en buen estado", "El pistón está funcionando correctamente", "El buje que acopla el pistón con la válvula de inyectado está en buen estado", "Otros"] }, { nombre: "Cubo de dulce", checks: ["El mezclador no está funcionando", "El motor del mezclador presenta algún ruido extraño y/o huelgo", "El reductor del mezclador no posee aceite y/o presenta pérdidas", "La cadena precisa lubricación y/o posee desgaste", "El reductor se encuentra con pérdidas de aceite", "La bomba de transporte tiene pérdidas", "La cañería de transporte presenta alguna pérdida", "Otros"] }, { nombre: "Cinta intermedia de entrada", checks: ["La cinta intermedia se encuentra en mal estado", "Los bujes están obstruidos y/o se encuentran en mal estado", "Los rodillos están obstruidos y/o precisan limpieza", "Se precisan lubricar bujes y/o cadenas", "Faltan protecciones", "El motor presenta algún ruido extraño y/o huelgo", "Otros"] }, { nombre: "Horno", checks: ["Las alarmas de desplazamiento no funcionan correctamente", "El FRL precisa ser purgado, tiene pérdidas y/o requiere cambio de filtro o manómetro", "Las botoneras/pulsadores no funcionan correctamente", "No funciona el cepillo interno", "No funciona el cepillo externo", "Los rodillos grandes no tienen rapador", "Micarta en mal estado", "Otros"] }, { nombre: "Cinta intermedia de salida", checks: ["La cinta intermedia se encuentra en mal estado", "Los bujes están obstruidos y/o presentan huelgo", "Los rodillos están obstruidos y/o precisan limpieza", "Se precisan lubricar bujes y/o cadenas", "Faltan protecciones", "Otros"] }, { nombre: "Cinta de enfriado", checks: ["Varillas faltantes y/o en mal estado", "Malla en mal estado", "El equipo precisa lubricación", "La puntera del eje de cinta necesita ser revisada", "Funcionan los ventiladores", "Ventiladores sueltos y/o con falta de protección", "Otros"] }, { nombre: "Cinta de elevación", checks: ["Algunos laterales se encuentran rotos y/o sueltos", "El soporte del motor se encuentra en mal estado", "Otros"] }, { nombre: "Cinta colectora de entrada a masipack", checks: ["Cinta en mal estado", "Piñones en mal estado", "El equipo precisa lubricación", "Rodamientos en mal estado", "El motorreductor presenta pérdidas de aceite y/o falta de aceite", "Otros"] }, { nombre: "Masipack", checks: ["El sellado vertical no está funcionando", "El sellado horizontal no está funcionando", "Hay vibradores lineales que no están funcionando", "Hay balanzas que no están funcionando", "El vibrador central no está funcionando", "Hay tolvas que no están abriendo y cerrando correctamente", "El panel de HMI no funciona correctamente", "Las seguridades de puertas no están funcionando", "Las mordazas necesitan lubricación", "Los tableros eléctricos no se encuentran cerrados", "El fechador no está funcionando", "Las temperaturas de las mordazas no pueden visualizarse en la pantalla", "No funcionan correctamente los pulsadores de marcha/parada", "No funciona correctamente la parada de emergencia", "Hay pérdidas de aire y/o aceite en el equipo", "Se escucha algún ruido extraño en la máquina y/o tableros", "El FRL necesita ser purgado y/o necesita cambio de filtro/manómetro", "Pérdidas de aceite en reductores", "Otros"] }, { nombre: "Detector de metales", checks: ["El equipo no funciona correctamente", "El indicador luminoso no está funcionando", "Ruidos anormales", "No está activado en el HMI el detector de metales y/o detectores de metales: parar marcha", "Otros"] }, { nombre: "Cerradora de cajas", checks: ["Cuchillas en mal estado", "Falta protección de cuchillas", "Bandas en mal estado", "Cama de rodillos con apoyo y/o patas faltantes", "Resortes en mal estado", "El fechador de cajas no funciona correctamente", "La parada de emergencia no funciona", "Ruidos anormales", "Otros"] }],
     "Línea 2": [{ nombre: "Amasadora", checks: ["Se denotan movimientos, roces y/o ruidos extraños", "El equipo precisa lubricación", "El motor físicamente se encuentra sucio", "Las botoneras/pulsadores/selectoras no funcionan correctamente", "El caudalímetro presenta alguna pérdida", "Las cañerías de materia harina/azúcar presentan pérdidas", "El FRL precisa purgarse, tiene pérdidas y/o precisa cambio de filtro o manómetro", "Los carros se encuentran con filos/rebarbas peligrosos para el usuario", "El reductor de la amasadora no posee aceite y/o presenta pérdidas", "El tablero no se encuentra cerrado", "Se perciben ruidos extraños del tablero", "Otros"] }, { nombre: "Rotativa", checks: ["Las protecciones no están colocadas", "Lona en mal estado", "Bujes están en mal estado", "El equipo precisa lubricación", "Las botoneras/pulsadores/selectoras funcionan correctamente", "Poleas en mal estado, con huelgo o desperfectos", "Cadenas/Correas en mal estado o con falta de lubricación", "Otros"] }, { nombre: "Cortadora", checks: ["No se denotan movimientos, roces y/o ruidos extraños", "El motor se encuentra físicamente sucio", "No se encuentran todas sus protecciones colocadas", "La lona no se encuentra en buen estado", "La cortadora de alambre precisa lubricación", "Las correas del motor no se encuentran en buen estado", "La polea presenta huelgo y/o desgaste", "El tablero no se encuentra cerrado", "Se perciben ruidos extraños del tablero", "Las botoneras/pulsadores/selectoras funcionan correctamente", "Otros"] }, { nombre: "Azucarador", checks: ["La sujeción del motovibrador está en mal estado", "Tacos de goma en mal estado", "Chapas de vibración en mal estado", "Bandeja recuperadora de azúcar en mal estado", "Otros"] }, { nombre: "Cinta intermedia de entrada", checks: ["La cinta intermedia se encuentra en mal estado", "Los bujes están obstruidos y/o se encuentran en mal estado", "Los rodillos están obstruidos y/o precisan limpieza", "Se precisan lubricar bujes y/o cadenas", "Faltan protecciones", "El motor presenta algún ruido extraño y/o huelgo", "Otros"] }, { nombre: "Horno", checks: ["Las alarmas de desplazamiento no funcionan correctamente", "El FRL precisa ser purgado, tiene pérdidas y/o requiere cambio de filtro o manómetro", "Las botoneras/pulsadores no funcionan correctamente", "No funciona el cepillo interno", "No funciona el cepillo externo", "Los rodillos grandes no tienen rapador", "El extractor de aire requiere revisión", "Micarta en mal estado", "Otros"] }, { nombre: "Cinta intermedia de salida", checks: ["La cinta intermedia se encuentra en mal estado", "Los bujes están obstruidos y/o presentan huelgo", "Los rodillos están obstruidos y/o precisan limpieza", "Se precisan lubricar bujes y/o cadenas", "Faltan protecciones", "Otros"] }, { nombre: "Cinta de enfriado", checks: ["Varillas faltantes y/o en mal estado", "Malla en mal estado", "El equipo precisa lubricación", "La puntera del eje de cinta necesita ser revisada", "Funcionan los ventiladores", "Ventiladores sueltos y/o con falta de protección", "Otros"] }, { nombre: "Cinta de elevación", checks: ["Algunos laterales se encuentran rotos y/o sueltos", "El soporte del motor se encuentra en mal estado", "Otros"] }, { nombre: "Cinta colectora de entrada a masipack", checks: ["Cinta en mal estado", "Eje en mal estado", "El equipo precisa lubricación", "Rodamientos en mal estado", "El motorreductor presenta pérdidas de aceite y/o falta de aceite", "Otros"] }, { nombre: "Masipack", checks: ["El sellado vertical no está funcionando", "El sellado horizontal no está funcionando", "Hay vibradores lineales que no están funcionando", "Hay balanzas que no están funcionando", "El vibrador central no está funcionando", "Hay tolvas que no están abriendo y cerrando correctamente", "El panel de HMI no funciona correctamente", "Las seguridades de puertas no están funcionando", "Las mordazas necesitan lubricación", "Los tableros eléctricos no se encuentran cerrados", "El fechador no está funcionando", "Las temperaturas de las mordazas no pueden visualizarse en la pantalla", "No funcionan correctamente los pulsadores de marcha/parada", "No funciona correctamente la parada de emergencia", "Hay pérdidas de aire y/o aceite en el equipo", "Se escucha algún ruido extraño en la máquina y/o tableros", "El FRL necesita ser purgado y/o necesita cambio de filtro/manómetro", "Otros"] }, { nombre: "Detector de metales", checks: ["No funciona correctamente el paro de emergencia", "No funciona correctamente la botonera", "No funciona correctamente la pantalla", "Cinta en mal estado", "Ruidos anormales", "Otros"] }, { nombre: "Cerradora de cajas", checks: ["Cuchillas en mal estado", "Falta protección de cuchillas", "Bandas en mal estado", "Cama de rodillos con apoyo y/o patas faltantes", "Resortes en mal estado", "El fechador de cajas no funciona correctamente", "La parada de emergencia no funciona", "Ruidos anormales", "Otros"] }],
@@ -676,13 +687,32 @@
     }
 
     // Rutinas tab
+  const puedeCargarRutinas = EMAILS_RUTINAS.includes(app.userEmail.toLowerCase());
+
+  if (!puedeCargarRutinas) {
     let html = `<div class="section login-status" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding: 12px 16px;">
+      <div style="font-weight:600; color:#10b981; display:flex; align-items:center; gap:8px;"><span class="material-icons-round">account_circle</span> ${app.userEmail}</div>
+      <button onclick="app.userEmail=''; app.userName=''; save(); checkLogin(); render();" style="flex:none; padding:8px 12px; background:#f1f5f9; font-size:13px; color:#475569; border:1px solid #cbd5e1; border-radius:8px; cursor:pointer; min-width:auto; transform:none;"><span class="material-icons-round" style="font-size:18px;">logout</span> Salir</button>
+    </div>
+    <div class="section" style="text-align:center; padding:40px 20px;">
+      <span class="material-icons-round" style="font-size:48px; color:#cbd5e1; display:block; margin-bottom:16px;">lock</span>
+      <h3 style="color:#475569; margin-bottom:8px;">Acceso restringido</h3>
+      <p style="color:#94a3b8; font-size:14px;">Tu cuenta no tiene permiso para cargar rutinas.<br>Podés usar la sección de Tickets de Trabajo.</p>
+      <button class="btn-guardar" onclick="switchTab('tickets')" style="margin-top:24px; width:auto; padding:12px 24px;">
+        <span class="material-icons-round">build</span> Ir a Tickets
+      </button>
+    </div>`;
+    document.getElementById('main').innerHTML = html;
+    return;
+  }
+
+  let html = `<div class="section login-status" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding: 12px 16px;">
     <div style="font-weight:600; color:#10b981; display:flex; align-items:center; gap:8px;"><span class="material-icons-round">account_circle</span> ${app.userEmail}</div>
     <button onclick="app.userEmail=''; app.userName=''; save(); checkLogin(); render();" style="flex:none; padding:8px 12px; background:#f1f5f9; font-size:13px; color:#475569; border:1px solid #cbd5e1; border-radius:8px; cursor:pointer; min-width:auto; transform:none;"><span class="material-icons-round" style="font-size:18px;">logout</span> Salir</button>
   </div>`;
 
-    const equipos = LINEAS[app.linea] || [];
-    html += `<div class="section selector-linea">
+  const equipos = LINEAS[app.linea] || [];
+  html += `<div class="section selector-linea">
     <div class="field">
       <label class="label">Selecciona Rutina</label>
       <select onchange="cambiarLinea(this.value)">
@@ -691,7 +721,7 @@
     </div>
   </div>`;
 
-    html += `<div class="section grid5">
+  html += `<div class="section grid5">
     <div class="field">
       <label class="label">Técnico *</label>
       <select onchange="app.tecnico=this.value; save(); updateBtnGuardar()">
@@ -720,19 +750,19 @@
     </div>
   </div>`;
 
-    equipos.forEach((eq, ei) => {
-      html += `<div class="equipo ${app.abiertos[ei] ? 'abierto' : ''}" data-equipo="${ei}">
+  equipos.forEach((eq, ei) => {
+    html += `<div class="equipo ${app.abiertos[ei] ? 'abierto' : ''}" data-equipo="${ei}">
       <div class="equipo-head" onclick="app.abiertos[${ei}]=!app.abiertos[${ei}]; vibratePhone(); save(); toggleEquipoDOM(${ei})">
         <div class="equipo-nombre">${ei + 1}. ${eq.nombre}</div>
         <div class="equipo-toggle"><span class="material-icons-round">expand_more</span></div>
       </div>
       <div class="equipo-body"><div class="equipo-body-inner">`;
 
-      eq.checks.forEach((cp, ci) => {
-        if (!app.datos[ei]) app.datos[ei] = {};
-        if (!app.datos[ei][ci]) app.datos[ei][ci] = { m: false, c: '' };
-        const d = app.datos[ei][ci];
-        html += `<div class="checkpoint ${d.m ? 'marcado' : ''}" data-checkpoint="${ei}-${ci}">
+    eq.checks.forEach((cp, ci) => {
+      if (!app.datos[ei]) app.datos[ei] = {};
+      if (!app.datos[ei][ci]) app.datos[ei][ci] = { m: false, c: '' };
+      const d = app.datos[ei][ci];
+      html += `<div class="checkpoint ${d.m ? 'marcado' : ''}" data-checkpoint="${ei}-${ci}">
         <div class="check-header">
           <input type="checkbox" ${d.m ? 'checked' : ''} onchange="toggleCheck(${ei},${ci})">
           <div class="check-texto">${cp}</div>
@@ -741,19 +771,19 @@
           <textarea onchange="updateComment(${ei},${ci},this.value)" placeholder="Agregá detalles (opcional)...">${d.c}</textarea>
         </div>
       </div>`;
-      });
-
-      html += `</div></div></div>`;
     });
 
-    html += `<div class="botones">
+    html += `</div></div></div>`;
+  });
+
+  html += `<div class="botones">
     <button class="btn-guardar" id="btnGuardar" onclick="guardar()" ${!app.tecnico || !app.supervisor ? 'disabled' : ''}><span class="material-icons-round">save</span> Guardar</button>
     <button class="btn-otro" onclick="limpiarLinea()"><span class="material-icons-round">cleaning_services</span> Limpiar</button>
     <button class="btn-otro" onclick="exportar()"><span class="material-icons-round">download</span> Exportar</button>
   </div>`;
 
-    document.getElementById('main').innerHTML = html;
-  }
+  document.getElementById('main').innerHTML = html;
+}
 
   window.addEventListener('online', processQueue);
   window.addEventListener('offline', updateOfflineBanner);
