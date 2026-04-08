@@ -525,15 +525,14 @@
   app.datos = JSON.parse(localStorage.getItem('datos_' + app.linea) || '{}');
 
   function checkLogin() {
-    if (!app.userEmail) {
-      document.getElementById('loginModal').style.display = 'flex';
-      return false;
-    } else {
-      document.getElementById('loginModal').style.display = 'none';
-      app.tecnico = app.userName || app.userEmail.split('@')[0];
-      return true;
-    }
+  if (!app.userEmail) {
+    document.getElementById('loginModal').style.display = 'flex';
+    return false;
+  } else {
+    document.getElementById('loginModal').style.display = 'none';
+    return true;
   }
+}
 
   function handleCredentialResponse(response) {
     try {
