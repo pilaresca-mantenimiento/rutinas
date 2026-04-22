@@ -754,6 +754,12 @@
           Inspección Puntual
         </div>
         <div style="font-size:12px; color:#64748b; margin-top:2px;">Registrá los puntos encontrados</div>
+        <div style="font-size:12px; color:#064E3B; margin-top:6px; background:#ecfdf5;
+                    padding:6px 12px; border-radius:8px; display:flex; gap:12px;">
+          <span id="insp-info-tecnico" style="font-weight:700;">—</span>
+          <span style="color:#94a3b8;">|</span>
+          <span id="insp-info-supervisor" style="font-weight:600;">—</span>
+        </div>
       </div>
       <button class="btn-otro" onclick="cerrarModalInspeccion()"
               style="flex:0; width:40px; height:40px; padding:0; border-radius:50%;">
@@ -775,7 +781,6 @@
 
   </div>
 </div>
-
 <main id="main"></main>
   
 <main id="main"></main>
@@ -1399,9 +1404,21 @@
 let inspeccionPuntos = [];
 
 function abrirModalInspeccion() {
+  // Verificar que haya técnico y supervisor cargados
+  if (!app.tecnico || !app.supervisor) {
+    mostrarToast('⚠ Seleccioná técnico y supervisor en Rutinas primero.', 'warning');
+    return;
+  }
+
+  // Mostrar técnico y supervisor en el header del modal
+  const elTec = document.getElementById('insp-info-tecnico');
+  const elSup = document.getElementById('insp-info-supervisor');
+  if (elTec) elTec.textContent = '👤 ' + app.tecnico;
+  if (elSup) elSup.textContent = '🔍 ' + app.supervisor;
+
   inspeccionPuntos = [];
   renderizarPuntos();
-  agregarPunto(); // Arranca con un punto vacío
+  agregarPunto();
   document.getElementById('modalInspeccion').style.display = 'flex';
   document.body.style.overflow = 'hidden';
 }
@@ -1554,17 +1571,49 @@ function renderizarPuntos() {
 }
 
 async function enviarInspeccion() {
-  const tecnico    = document.getElementById('tecnico')?.value?.trim()
-                  || document.getElementById('sel-tecnico')?.value?.trim() || '';
-  const supervisor = document.getElementById('supervisor')?.value?.trim()
-                  || document.getElementById('sel-supervisor')?.value?.trim() || '';
+  const tecnico    = app.tecnico?.trim() || '';
+  const supervisor = app.supervisor?.trim() || '';
 
-  // Validar que técnico y supervisor estén cargados
   if (!tecnico || !supervisor) {
-    mostrarToast('⚠ Completá técnico y supervisor antes de enviar.', 'warning');
-    cerrarModalInspeccion();
+    mostrarToast('⚠ Seleccioná técnico y supervisor en Rutinas primero.', 'warning');
     return;
   }
+
+  for (let i = 0; i < inspeccionPuntos.length; i++) {
+    const p = inspeccionPuntos[i];
+    if (!p.linea || !p.equipo || !p.checkpoint || !p.observacion.trim()) {
+      mostrarToast(`⚠ Completá todos los campos del Punto ${i + 1}.`, 'warning');
+      return;
+    }
+  }
+
+  const btnEnviar = document.getElementById('insp-btn-enviar');
+  btnEnviar.disabled = true;
+  btnEnviar.innerHTML = '<span class="material-icons-round" style="animation:spin 1s linear infinite;">sync</span> Enviando...';
+
+  const payload = {
+    tipo:       'inspeccion',
+    tecnico,
+    supervisor,
+    fecha:      new Date().toISOString(),
+    puntos:     inspeccionPuntos
+  };
+
+  try {
+    const formData = new FormData();
+    formData.append('payload', JSON.stringify(payload));
+    await fetch(apiUrl, { method: 'POST', body: formData, mode: 'no-cors' });
+    inspeccionPuntos = [];
+    document.getElementById('modalInspeccion').style.display = 'none';
+    document.body.style.overflow = '';
+    mostrarToast('✓ Inspección enviada correctamente.', 'success');
+  } catch (err) {
+    mostrarToast('✗ Error al enviar. Revisá conexión.', 'error');
+  } finally {
+    btnEnviar.disabled = false;
+    btnEnviar.innerHTML = '<span class="material-icons-round">send</span> Enviar inspección';
+  }
+}
 
   // Validar cada punto
   for (let i = 0; i < inspeccionPuntos.length; i++) {
