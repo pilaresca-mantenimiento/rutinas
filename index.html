@@ -724,8 +724,8 @@
 </div>
 
 <!-- MODAL INSPECCIÓN -->
-<div class="modal-overlay" id="modalInspeccion" style="display:none; align-items:flex-end;">
-  <div class="insp-modal-sheet">
+<div class="modal-overlay" id="modalInspeccion" style="display:none; align-items:flex-end;" 
+     onclick="if(event.target===this) cerrarModalInspeccion()">
     <div class="insp-modal-header">
       <div>
         <div style="font-size:18px; font-weight:800; color:#064E3B;">
@@ -1383,8 +1383,17 @@ function abrirModalInspeccion() {
 }
 
 function cerrarModalInspeccion() {
+  const tieneDatos = inspeccionPuntos.some(p =>
+    p.linea || p.equipo || p.checkpoint || p.observacion.trim()
+  );
+
+  if (tieneDatos) {
+    if (!confirm('¿Cancelar la inspección? Se perderán los datos cargados.')) return;
+  }
+
   document.getElementById('modalInspeccion').style.display = 'none';
   document.body.style.overflow = '';
+  inspeccionPuntos = [];
 }
 
 function agregarPunto() {
