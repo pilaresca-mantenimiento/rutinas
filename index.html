@@ -33,9 +33,7 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg-gradient);
@@ -72,11 +70,7 @@
       letter-spacing: -0.5px;
     }
 
-    .header p {
-      font-size: 13px;
-      font-weight: 500;
-      opacity: 0.9;
-    }
+    .header p { font-size: 13px; font-weight: 500; opacity: 0.9; }
 
     main {
       padding: 20px;
@@ -84,7 +78,7 @@
       max-width: 800px;
       margin: 0 auto;
       width: 100%;
-      padding-bottom: 120px; /* Space for sticky dock */
+      padding-bottom: 120px;
     }
 
     .section {
@@ -104,11 +98,7 @@
       gap: 16px;
     }
 
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .field { display: flex; flex-direction: column; gap: 8px; }
 
     .label {
       font-size: 11px;
@@ -118,9 +108,7 @@
       letter-spacing: 1px;
     }
 
-    select,
-    input,
-    textarea {
+    select, input, textarea {
       width: 100%;
       padding: 14px 16px;
       background: #f8fafc;
@@ -133,7 +121,6 @@
       appearance: none;
     }
 
-    /* Custom select arrow */
     select {
       background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2364748b%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
       background-repeat: no-repeat;
@@ -142,21 +129,15 @@
       padding-right: 40px;
     }
 
-    select:focus,
-    input:focus,
-    textarea:focus {
+    select:focus, input:focus, textarea:focus {
       outline: none;
       border-color: var(--primary);
       background: white;
       box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
     }
 
-    .login-status {
-      padding: 12px 20px !important;
-      border-radius: 16px !important;
-    }
+    .login-status { padding: 12px 20px !important; border-radius: 16px !important; }
 
-    /* Equipos y Checkpoints (Premium) */
     .equipo {
       background: white;
       border: 1px solid var(--border);
@@ -183,9 +164,7 @@
       transition: background 0.2s;
     }
 
-    .equipo-head:active {
-      background: #f8fafc;
-    }
+    .equipo-head:active { background: #f8fafc; }
 
     .equipo-nombre {
       font-weight: 700;
@@ -264,27 +243,16 @@
     .checkpoint::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
+      left: 0; top: 0; bottom: 0;
       width: 4px;
       background: #cbd5e1;
       transition: background 0.3s ease;
     }
 
-    .checkpoint:hover {
-      border-color: #cbd5e1;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-    }
+    .checkpoint:hover { border-color: #cbd5e1; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); }
 
-    .checkpoint.marcado {
-      border-color: #fca5a5;
-      background: var(--danger-light);
-    }
-
-    .checkpoint.marcado::before {
-      background: var(--danger);
-    }
+    .checkpoint.marcado { border-color: #fca5a5; background: var(--danger-light); }
+    .checkpoint.marcado::before { background: var(--danger); }
 
     .check-header {
       display: flex;
@@ -302,12 +270,8 @@
       transition: color 0.3s;
     }
 
-    .checkpoint.marcado .check-texto {
-      color: #7f1d1d;
-      font-weight: 600;
-    }
+    .checkpoint.marcado .check-texto { color: #7f1d1d; font-weight: 600; }
 
-    /* Premium Toggle Switch */
     .toggle-switch {
       position: relative;
       display: inline-block;
@@ -316,11 +280,7 @@
       flex-shrink: 0;
     }
 
-    .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
 
     .toggle-slider {
       position: absolute;
@@ -345,14 +305,8 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
-    input:checked + .toggle-slider {
-      background-color: var(--danger);
-      border-color: var(--danger);
-    }
-
-    input:checked + .toggle-slider:before {
-      transform: translateX(24px);
-    }
+    input:checked + .toggle-slider { background-color: var(--danger); border-color: var(--danger); }
+    input:checked + .toggle-slider:before { transform: translateX(24px); }
 
     .toggle-label {
       font-size: 11px;
@@ -365,10 +319,8 @@
       width: 60px;
       text-align: right;
     }
-    input:checked ~ .toggle-label {
-      color: var(--danger);
-    }
 
+    input:checked ~ .toggle-label { color: var(--danger); }
 
     .check-comment {
       max-height: 0;
@@ -377,11 +329,7 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .checkpoint.marcado .check-comment {
-      max-height: 200px;
-      opacity: 1;
-      margin-top: 14px;
-    }
+    .checkpoint.marcado .check-comment { max-height: 200px; opacity: 1; margin-top: 14px; }
 
     .check-comment textarea {
       width: 100%;
@@ -390,13 +338,12 @@
       background: white;
       border-color: #fca5a5;
     }
+
     .check-comment textarea:focus {
       box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
       border-color: var(--danger);
     }
 
-
-    /* Floating Action Dock */
     .action-dock {
       position: fixed;
       bottom: 20px;
@@ -433,7 +380,6 @@
       overflow: hidden;
     }
 
-    /* Ripple Effect */
     button::after {
       content: "";
       background: rgba(255, 255, 255, 0.3);
@@ -447,18 +393,14 @@
       opacity: 0;
       transition: all 0.8s;
     }
+
     button:active::after {
-      padding-top: 0;
-      padding-left: 0;
-      margin-top: 0;
-      margin-left: 0;
-      opacity: 1;
-      transition: 0s;
+      padding-top: 0; padding-left: 0;
+      margin-top: 0; margin-left: 0;
+      opacity: 1; transition: 0s;
     }
 
-    button:active:not(:disabled) {
-      transform: scale(0.96);
-    }
+    button:active:not(:disabled) { transform: scale(0.96); }
 
     button:disabled {
       opacity: 0.5;
@@ -471,7 +413,7 @@
       background: var(--primary);
       color: white;
       box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
-      flex: 2; /* Make save button wider */
+      flex: 2;
     }
 
     .btn-guardar:hover:not(:disabled) {
@@ -480,20 +422,12 @@
       transform: translateY(-2px);
     }
 
-    .btn-otro {
-      background: #f1f5f9;
-      color: #334155;
-    }
+    .btn-otro { background: #f1f5f9; color: #334155; }
+    .btn-otro:hover { background: #e2e8f0; color: #0f172a; }
 
-    .btn-otro:hover {
-      background: #e2e8f0;
-      color: #0f172a;
-    }
-
-    /* Tabs Styling Premium */
     .tabs-container {
       position: sticky;
-      top: 83px; /* Header height offset */
+      top: 83px;
       z-index: 40;
       background: var(--bg-gradient);
       padding: 10px 20px;
@@ -528,10 +462,7 @@
       gap: 8px;
     }
 
-    .tab:hover:not(.active) {
-      background: rgba(255, 255, 255, 0.8);
-      color: var(--text);
-    }
+    .tab:hover:not(.active) { background: rgba(255, 255, 255, 0.8); color: var(--text); }
 
     .tab.active {
       background: white;
@@ -540,7 +471,6 @@
       transform: scale(1.02);
     }
 
-    /* Alerts and Modals */
     .alert-banner {
       display: none;
       background: var(--warning);
@@ -585,116 +515,108 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
-/* ── INSPECCIÓN MODAL ───────────────────────────────── */
-.insp-modal-sheet {
-  background: white;
-  width: 100%;
-  max-width: 800px;
-  max-height: 92dvh;
-  border-radius: 24px 24px 0 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: 0 -8px 40px rgba(0,0,0,0.15);
-  animation: slideUp 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
-}
+    /* ── INSPECCIÓN MODAL ── */
+    #modalInspeccion {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      z-index: 9999;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
 
-@keyframes slideUp {
-  from { transform: translateY(100%); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
-}
+    .insp-modal-sheet {
+      background: white;
+      width: 100%;
+      max-width: 800px;
+      max-height: 92dvh;
+      border-radius: 24px 24px 0 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 -8px 40px rgba(0,0,0,0.15);
+      animation: slideUp 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+    }
 
-.insp-modal-header {
-  padding: 20px 20px 16px;
-  border-bottom: 1px solid #f1f5f9;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-shrink: 0;
-  background: #f8fffe;
-}
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
 
-.insp-modal-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px 20px;
-  -webkit-overflow-scrolling: touch;
-}
+    .insp-modal-header {
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      background: #f8fffe;
+    }
 
-.insp-modal-footer {
-  padding: 14px 16px;
-  border-top: 1px solid #f1f5f9;
-  display: flex;
-  gap: 10px;
-  flex-shrink: 0;
-  background: white;
-  padding-bottom: max(14px, env(safe-area-inset-bottom));
-}
+    .insp-modal-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 20px;
+      -webkit-overflow-scrolling: touch;
+    }
 
-.insp-punto {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+    .insp-modal-footer {
+      padding: 14px 16px;
+      border-top: 1px solid #f1f5f9;
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+      background: white;
+      padding-bottom: max(14px, env(safe-area-inset-bottom));
+    }
 
-.insp-punto-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    .insp-punto {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-.insp-punto-num {
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--primary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  background: #ecfdf5;
-  padding: 4px 12px;
-  border-radius: 20px;
-}
+    .insp-punto-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.insp-btn-del {
-  background: #fef2f2 !important;
-  color: var(--danger) !important;
-  border: 1px solid #fecaca !important;
-  flex: 0 !important;
-  width: 34px !important;
-  height: 34px !important;
-  padding: 0 !important;
-  border-radius: 50% !important;
-  box-shadow: none !important;
-}
+    .insp-punto-num {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: #ecfdf5;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
+    .insp-btn-del {
+      background: #fef2f2 !important;
+      color: var(--danger) !important;
+      border: 1px solid #fecaca !important;
+      flex: 0 !important;
+      width: 34px !important;
+      height: 34px !important;
+      padding: 0 !important;
+      border-radius: 50% !important;
+      box-shadow: none !important;
+    }
 
-#modalInspeccion {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  display: none;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-#modalInspeccion .insp-modal-sheet {
-  width: 100%;
-  max-width: 800px;
-}
-
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
   </style>
 </head>
 
@@ -708,43 +630,40 @@
   <p>Inspección Inteligente - Pilares</p>
 </div>
 
-<div class="tabs">
-  <div class="tab active" onclick="switchTab('rutinas')" id="tab-rutinas">
-    <span class="material-icons-round">assignment_turned_in</span> Rutinas
-  </div>
-  <div class="tab" onclick="switchTab('tickets')" id="tab-tickets">
-    <span class="material-icons-round">build_circle</span> Tickets
-  </div>
-  <div class="tab" onclick="abrirModalInspeccion()" id="tab-inspeccion">
-    <span class="material-icons-round">search</span> Inspección
+<div class="tabs-container">
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('rutinas')" id="tab-rutinas">
+      <span class="material-icons-round">assignment_turned_in</span> Rutinas
+    </div>
+    <div class="tab" onclick="switchTab('tickets')" id="tab-tickets">
+      <span class="material-icons-round">build_circle</span> Tickets
+    </div>
+    <div class="tab" onclick="abrirModalInspeccion()" id="tab-inspeccion">
+      <span class="material-icons-round">search</span> Inspección
+    </div>
   </div>
 </div>
 
 <div class="modal-overlay" id="loginModal">
   <div class="modal-content">
     <div style="background: #ecfdf5; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
-        <span class="material-icons-round" style="font-size: 40px; color: #10b981;">account_circle</span>
+      <span class="material-icons-round" style="font-size: 40px; color: #10b981;">account_circle</span>
     </div>
     <h2 style="margin-bottom: 8px; font-weight: 800; font-size: 24px;">Iniciar Sesión</h2>
     <p style="color: #64748b; margin-bottom: 30px; font-size: 14px; line-height: 1.5;">Ingresa de forma segura para identificar tus reportes.</p>
-
-    <!-- Google Login Button setup -->
     <div id="g_id_onload" data-client_id="10710520536-cajboeif505sspi24uqv8lokvsrvr6pt.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
     <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_black" data-text="signin_with" data-size="large" data-logo_alignment="left" style="margin-bottom:24px; display: flex; justify-content: center;"></div>
-
     <div style="position:relative; margin: 24px 0; text-align:center;">
-        <div style="border-top: 1px solid #e2e8f0; position: absolute; top:50%; left:0; right:0;"></div>
-        <span style="background:white; padding:0 12px; color:#94a3b8; font-size:12px; font-weight:700; position:relative;">ACCESO MANUAL</span>
+      <div style="border-top: 1px solid #e2e8f0; position: absolute; top:50%; left:0; right:0;"></div>
+      <span style="background:white; padding:0 12px; color:#94a3b8; font-size:12px; font-weight:700; position:relative;">ACCESO MANUAL</span>
     </div>
-
     <input type="email" id="manualEmail" placeholder="tu_correo@gmail.com" onkeydown="if(event.key==='Enter') document.getElementById('loginBtn').click();">
     <button id="loginBtn" class="btn-guardar" onclick="loginManual()" style="width:100%; margin-top:12px;">Ingresar al sistema</button>
   </div>
 </div>
 
 <!-- MODAL INSPECCIÓN -->
-<div class="modal-overlay" id="modalInspeccion" style="display:none; align-items:flex-end;"
-     onclick="if(event.target===this) cerrarModalInspeccion()">
+<div id="modalInspeccion" onclick="if(event.target===this) cerrarModalInspeccion()">
   <div class="insp-modal-sheet">
 
     <div class="insp-modal-header">
@@ -781,8 +700,7 @@
 
   </div>
 </div>
-<main id="main"></main>
-  
+
 <main id="main"></main>
 
 <script>
@@ -805,7 +723,7 @@
     "Silos y Plastificadores": [{ nombre: "Silo de huevo 1", checks: ["El equipo no está funcionando correctamente", "El condensador se encuentra sucio", "Temperatura", "Otros"] }, { nombre: "Silo de huevo 2", checks: ["El equipo no está funcionando correctamente", "El condensador se encuentra sucio", "Temperatura", "Otros"] }, { nombre: "Silo de harina repicky 1", checks: ["Correas en mal estado", "Filtros en mal estado o tapados", "Bajo nivel de aceite", "Presión de salida", "Otros"] }, { nombre: "Silo de harina repicky 2", checks: ["Correas en mal estado", "Filtros en mal estado o tapados", "Bajo nivel de aceite", "Presión de salida", "Otros"] }, { nombre: "Silo de harina y azucar 1", checks: ["No está funcionando la rosca 1 de harina", "No está funcionando la rosca 2 de harina", "No está funcionando correctamente la rosca 1 de azúcar", "No está funcionando correctamente la rosca 2 de azúcar", "Rodamientos en mal estado", "Cadenas de tracción en mal estado", "No están funcionando correctamente el motoreductores", "No está funcionando correctamente la saranda", "No está funcionando correctamente la esclusa", "Se encuentran pérdidas de materia prima", "Se encuentran pérdidas de aceite", "Otros"] }, { nombre: "Silo de harina y azucar 2", checks: ["No está funcionando la rosca 3 de harina", "No está funcionando la rosca 4 de harina", "No está funcionando correctamente la rosca 3 de azúcar", "No está funcionando correctamente la rosca 4 de azúcar", "Rodamientos en mal estado", "Cadenas de tracción en mal estado", "No están funcionando correctamente el motoreductores", "No está funcionando correctamente la saranda", "No está funcionando correctamente la esclusa", "Se encuentran pérdidas de materia prima", "Se encuentran pérdidas de aceite", "Otros"] }, { nombre: "Silo de harina línea 5", checks: ["No está funcionando la rosca 5", "No está funcionando la rosca 6", "Rodamientos en mal estado", "Cadenas de tracción en mal estado", "No está funcionando correctamente el motoreductor", "No está funcionando correctamente la saranda", "No está funcionando correctamente la esclusa", "Se encuentran pérdidas de materia prima", "Se encuentran pérdidas de aceite", "Otros"] }, { nombre: "Plastificador 1", checks: ["El sistema no está funcionando correctamente", "Agitador detenido", "No está plastificando correctamente", "Control de temperatura", "Otros"] }, { nombre: "Plastificador 2", checks: ["El sistema no está funcionando correctamente", "Agitador detenido", "No está plastificando correctamente", "Control de temperatura", "Otros"] }, { nombre: "Plastificador 3", checks: ["El sistema no está funcionando correctamente", "Agitador detenido", "No está plastificando correctamente", "Control de temperatura", "Otros"] }, { nombre: "Plastificador 4", checks: ["El sistema no está funcionando correctamente", "Agitador detenido", "No está plastificando correctamente", "Control de temperatura", "Otros"] }]
   };
 
-  const TECNICOS = ['Alexis Monsalvo', 'Jose Garcia', 'Juan Escobar', 'Dante Vera', 'Tomas Lopez', 'Ruben Friedrich', 'Hector Alegre', 'Miguel Bianchi', 'Hugo Escobar', 'Franco Paez', 'Dario Gamba', 'Raul Ledesma', 'Diego Sanchez', 'Alejandro Ontivero' ];
+  const TECNICOS = ['Alexis Monsalvo', 'Jose Garcia', 'Juan Escobar', 'Dante Vera', 'Tomas Lopez', 'Ruben Friedrich', 'Hector Alegre', 'Miguel Bianchi', 'Hugo Escobar', 'Franco Paez', 'Dario Gamba', 'Raul Ledesma', 'Diego Sanchez', 'Alejandro Ontivero'];
   const SUPERVISORES = ['Hugo Escobar', 'Franco Paez', 'Dario Gamba'];
 
   Object.values(LINEAS).forEach(linea => {
@@ -841,7 +759,7 @@
     try {
       const base64Url = response.credential.split('.')[1];
       const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
       }).join(''));
       const data = JSON.parse(jsonPayload);
@@ -893,6 +811,7 @@
     currentTab = tab;
     document.getElementById('tab-rutinas').classList.remove('active');
     document.getElementById('tab-tickets').classList.remove('active');
+    document.getElementById('tab-inspeccion').classList.remove('active');
     document.getElementById('tab-' + tab).classList.add('active');
     render();
   }
@@ -957,33 +876,33 @@
       </div>`;
 
       ht += `<div class="section">
-      <h3 style="margin-bottom: 24px; color: var(--text); font-weight:800; font-size: 20px;">Reportar Ticket</h3>
-      <div class="field" style="margin-bottom: 16px;">
-        <label class="label">Tipo de Ticket *</label>
-        <select id="ticketType">
-          <option value="Servicios/Edilicio">Servicios / Edilicio</option>
-          <option value="Equipo Directo">Equipo Directo</option>
-          <option value="Otro">Otro</option>
-        </select>
-      </div>
-      <div class="field" style="margin-bottom: 16px;">
-        <label class="label">Ubicación / Área *</label>
-        <input type="text" id="ticketArea" placeholder="Ej: Pasillo Línea 2, Baños, etc.">
-      </div>
-      <div class="field" style="margin-bottom: 16px;">
-        <label class="label">Descripción del Problema *</label>
-        <textarea id="ticketDesc" placeholder="Describa el problema detalladamente..." style="min-height: 120px;"></textarea>
-      </div>
-      <div class="field" style="margin-bottom: 24px;">
-        <label class="label">Urgencia</label>
-        <select id="ticketUrgency" style="font-weight: 700; border: 2px solid var(--warning); color: var(--warning);">
-          <option value="Baja">Baja</option>
-          <option value="Media" selected>Media</option>
-          <option value="Alta">Alta</option>
-        </select>
-      </div>
-      <button class="btn-guardar" onclick="guardarTicket()" style="width:100%;"><span class="material-icons-round">send</span> Enviar Ticket al Sistema</button>
-    </div>`;
+        <h3 style="margin-bottom: 24px; color: var(--text); font-weight:800; font-size: 20px;">Reportar Ticket</h3>
+        <div class="field" style="margin-bottom: 16px;">
+          <label class="label">Tipo de Ticket *</label>
+          <select id="ticketType">
+            <option value="Servicios/Edilicio">Servicios / Edilicio</option>
+            <option value="Equipo Directo">Equipo Directo</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="field" style="margin-bottom: 16px;">
+          <label class="label">Ubicación / Área *</label>
+          <input type="text" id="ticketArea" placeholder="Ej: Pasillo Línea 2, Baños, etc.">
+        </div>
+        <div class="field" style="margin-bottom: 16px;">
+          <label class="label">Descripción del Problema *</label>
+          <textarea id="ticketDesc" placeholder="Describa el problema detalladamente..." style="min-height: 120px;"></textarea>
+        </div>
+        <div class="field" style="margin-bottom: 24px;">
+          <label class="label">Urgencia</label>
+          <select id="ticketUrgency" style="font-weight: 700; border: 2px solid var(--warning); color: var(--warning);">
+            <option value="Baja">Baja</option>
+            <option value="Media" selected>Media</option>
+            <option value="Alta">Alta</option>
+          </select>
+        </div>
+        <button class="btn-guardar" onclick="guardarTicket()" style="width:100%;"><span class="material-icons-round">send</span> Enviar Ticket al Sistema</button>
+      </div>`;
       document.getElementById('main').innerHTML = ht;
       return;
     }
@@ -1059,8 +978,6 @@
         if (!app.datos[ei]) app.datos[ei] = {};
         if (!app.datos[ei][ci]) app.datos[ei][ci] = { m: false, c: '' };
         const d = app.datos[ei][ci];
-        
-        // Premium Checkpoint con Toggle Switch
         html += `<div class="checkpoint ${d.m ? 'marcado' : ''}" data-checkpoint="${ei}-${ci}">
           <div class="check-header">
             <div class="check-texto">${cp}</div>
@@ -1101,10 +1018,8 @@
     if (!navigator.onLine) return;
     const offlineQueue = JSON.parse(localStorage.getItem('offlineQueue') || '[]');
     if (offlineQueue.length === 0) return;
-
     const batch = [...offlineQueue];
     localStorage.setItem('offlineQueue', '[]');
-
     Promise.all(batch.map(item =>
       fetch(apiUrl, {
         method: 'POST',
@@ -1114,7 +1029,7 @@
       })
     )).then(() => {
       console.log("Cola enviada!!!");
-    }).catch(err => {
+    }).catch(() => {
       enqueueOffline(batch);
     });
   }
@@ -1129,12 +1044,10 @@
   async function sendOrQueue(payloadSheet, forceQueue = false) {
     if (!navigator.onLine || forceQueue) {
       enqueueOffline([{ id: Date.now(), type: payloadSheet.tipo || 'rutina', payloadSheet }]);
-      alert('Guardado seguro en tu celular. El sistema lo sincronizará apenar enganches 4G o WiFi automáticamente.');
+      alert('Guardado seguro en tu celular. El sistema lo sincronizará apenas enganches 4G o WiFi automáticamente.');
       return;
     }
-
     try {
-      // Simulate premium instant feedback
       document.body.style.pointerEvents = 'none';
       await fetch(apiUrl, {
         method: 'POST',
@@ -1154,7 +1067,6 @@
     const area = document.getElementById('ticketArea').value;
     const desc = document.getElementById('ticketDesc').value;
     if (!area || !desc) return alert('Completa el área y la descripción');
-
     const payloadSheet = {
       tipo: 'ticket',
       fecha: new Date().toISOString(),
@@ -1164,7 +1076,6 @@
       descripcion: desc,
       urgencia: document.getElementById('ticketUrgency').value
     };
-
     await sendOrQueue(payloadSheet);
     switchTab('rutinas');
   }
@@ -1191,7 +1102,6 @@
     const fecha = new Date(payload.fecha);
     const fechaStr = fecha.toLocaleDateString('es-AR');
     const horaStr = fecha.toLocaleTimeString('es-AR');
-
     const totalChecks = payload.equipos.reduce((s, eq) => s + eq.checks.length, 0);
     const novedades = payload.equipos.reduce((s, eq) => s + eq.checks.filter(c => c.marcado).length, 0);
     const ok = totalChecks - novedades;
@@ -1202,7 +1112,6 @@
       const estadoEquipo = tieneNovedades ? '⚠ Falla / Novedad' : '✓ Limpio / OK';
       const colorEquipo = tieneNovedades ? '#fef2f2' : '#f0fdf4';
       const colorBorde = tieneNovedades ? '#ef4444' : '#10b981';
-
       let checksHtml = '';
       eq.checks.forEach(ch => {
         const esNovedad = ch.marcado;
@@ -1211,109 +1120,58 @@
         const icono = esNovedad ? '⚠' : '✓';
         const color = esNovedad ? '#b91c1c' : '#059669';
         const peso = esNovedad ? 'bold' : 'normal';
-
         checksHtml += `
         <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 16px;
                     background:${bg};border-left:4px solid ${borde};
-                    border-radius:8px;margin-bottom:8px;box-shadow:0 2px 4px rgba(0,0,0,0.02)">
+                    border-radius:8px;margin-bottom:8px;">
           <span style="color:${color};font-weight:bold;min-width:20px;font-size:16px;">${icono}</span>
           <div style="flex:1;">
-            <span style="font-size:14px;color:${esNovedad? '#7f1d1d' : '#334155'};font-weight:${peso};">${ch.texto}</span>
-            ${ch.marcado && ch.comentario
-            ? `<div style="font-size:13px;color:#b91c1c;margin-top:6px;font-style:italic;">"${ch.comentario}"</div>`
-            : ''}
+            <span style="font-size:14px;color:${esNovedad ? '#7f1d1d' : '#334155'};font-weight:${peso};">${ch.texto}</span>
+            ${ch.marcado && ch.comentario ? `<div style="font-size:13px;color:#b91c1c;margin-top:6px;font-style:italic;">"${ch.comentario}"</div>` : ''}
           </div>
         </div>`;
       });
-
       equiposHtml += `
-      <div style="margin-bottom:20px;border:1px solid ${colorBorde};border-radius:12px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,0.03);">
+      <div style="margin-bottom:20px;border:1px solid ${colorBorde};border-radius:12px;overflow:hidden;">
         <div style="background:${colorEquipo};padding:14px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid ${colorBorde}">
-          <span style="font-weight:800;font-size:16px;color:${tieneNovedades? '#991b1b':'#064e3b'};">${eq.nombre}</span>
+          <span style="font-weight:800;font-size:16px;color:${tieneNovedades ? '#991b1b' : '#064e3b'};">${eq.nombre}</span>
           <span style="font-size:12px;font-weight:800;color:${tieneNovedades ? '#ef4444' : '#10b981'};text-transform:uppercase;">${estadoEquipo}</span>
         </div>
         <div style="padding:14px;">${checksHtml}</div>
       </div>`;
     });
 
-    const html = `<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>VOUCHER PMP — ${payload.linea}</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-           background:#f8fafc; color:#0f172a; }
-    .header { background:linear-gradient(135deg,#10b981,#059669);
-              padding:30px 24px; color:white; text-align:center; }
-    .header h1 { font-size:24px; font-weight:800; margin-bottom:6px; letter-spacing:-0.5px;}
-    .header p  { font-size:14px; opacity:0.9; font-weight:500; }
-    .meta { background:white; border-bottom:1px solid #e2e8f0;
-            padding:20px 24px; display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px; }
-    .meta-item label { font-size:11px; font-weight:800; color:#94a3b8;
-                       text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:4px; }
-    .meta-item span  { font-size:15px; font-weight:700; color:#334155; }
-    .kpis { display:grid; grid-template-columns:repeat(3,1fr);
-            gap:16px; padding:24px; background:#f8fafc; }
-    .kpi  { background:white; border-radius:16px; padding:20px;
-            text-align:center; border:1px solid #e2e8f0; box-shadow:0 4px 10px rgba(0,0,0,0.02)}
-    .kpi .num  { font-size:36px; font-weight:800; color:#334155; }
-    .kpi .lbl  { font-size:12px; font-weight:700; color:#64748b; text-transform:uppercase;
-                 letter-spacing:.5px; margin-top:4px; }
-    .kpi.ok    { border:2px solid #10b981; }
-    .kpi.ok .num { color:#10b981; }
-    .kpi.nov   { border:2px solid #ef4444; }
-    .kpi.nov .num { color:#ef4444; }
-    .body { padding:0 24px 40px; max-width:800px; margin:0 auto; }
-    .btn-pdf { display:block; width:100%; padding:18px;
-               background:#1e293b; color:white; border:none;
-               border-radius:14px; font-size:16px; font-weight:800;
-               cursor:pointer; margin:0 0 24px; transition:transform 0.2s;}
-    .btn-pdf:active { transform:scale(0.98); }
-    .firma { background:white; border:1px dashed #cbd5e1; border-radius:16px;
-             padding:20px; margin-top:24px; font-size:13px; color:#64748b;
-             text-align:center; line-height:1.6; font-weight:500;}
-    @media print {
-      .btn-pdf { display:none; }
-      body { background:white; }
-      .header { background:#10b981 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-    }
-  </style>
-</head>
-<body>
-  <div class="header">
-    <h1>Voucher de Inspección PMP</h1>
-    <p>Pilares Compañía Alimenticia — Registro Encriptado</p>
+    const html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>VOUCHER PMP — ${payload.linea}</title></head>
+<body style="font-family:-apple-system,sans-serif;background:#f8fafc;color:#0f172a;">
+  <div style="background:linear-gradient(135deg,#10b981,#059669);padding:30px 24px;color:white;text-align:center;">
+    <h1 style="font-size:24px;font-weight:800;margin-bottom:6px;">Voucher de Inspección PMP</h1>
+    <p style="font-size:14px;opacity:.9;">Pilares Compañía Alimenticia</p>
   </div>
-  <div class="meta">
-    <div class="meta-item"><label>Línea / Área</label><span>${payload.linea}</span></div>
-    <div class="meta-item"><label>Técnico Aprobador</label><span>${payload.tecnico}</span></div>
-    <div class="meta-item"><label>Supervisor</label><span>${payload.supervisor}</span></div>
-    <div class="meta-item"><label>Fecha Exacta</label><span>${fechaStr} a las ${horaStr}</span></div>
+  <div style="background:white;padding:20px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;border-bottom:1px solid #e2e8f0;">
+    <div><div style="font-size:11px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:4px;">Línea</div><div style="font-size:15px;font-weight:700;">${payload.linea}</div></div>
+    <div><div style="font-size:11px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:4px;">Técnico</div><div style="font-size:15px;font-weight:700;">${payload.tecnico}</div></div>
+    <div><div style="font-size:11px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:4px;">Supervisor</div><div style="font-size:15px;font-weight:700;">${payload.supervisor}</div></div>
+    <div><div style="font-size:11px;font-weight:800;color:#94a3b8;text-transform:uppercase;margin-bottom:4px;">Fecha</div><div style="font-size:15px;font-weight:700;">${fechaStr} ${horaStr}</div></div>
   </div>
-  <div class="kpis">
-    <div class="kpi"><div class="num">${totalChecks}</div><div class="lbl">Evaluados</div></div>
-    <div class="kpi ok"><div class="num">${ok}</div><div class="lbl">Aprobados</div></div>
-    <div class="kpi nov"><div class="num">${novedades}</div><div class="lbl">Fallas / Detalles</div></div>
-  </div>
-  <div class="body">
-    <button class="btn-pdf" onclick="window.print()">Guardar copia PDF / Captura</button>
-    ${equiposHtml}
-    <div class="firma">
-      <strong>Voucher Digital PMP</strong><br>
-      Técnico interviniente: <strong>${payload.tecnico}</strong><br>
-      Los datos han sido subidos a la nube central.
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:24px;background:#f8fafc;">
+    <div style="background:white;border-radius:16px;padding:20px;text-align:center;border:1px solid #e2e8f0;">
+      <div style="font-size:36px;font-weight:800;">${totalChecks}</div><div style="font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;">Evaluados</div>
+    </div>
+    <div style="background:white;border-radius:16px;padding:20px;text-align:center;border:2px solid #10b981;">
+      <div style="font-size:36px;font-weight:800;color:#10b981;">${ok}</div><div style="font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;">Aprobados</div>
+    </div>
+    <div style="background:white;border-radius:16px;padding:20px;text-align:center;border:2px solid #ef4444;">
+      <div style="font-size:36px;font-weight:800;color:#ef4444;">${novedades}</div><div style="font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;">Fallas</div>
     </div>
   </div>
-</body>
-</html>`;
+  <div style="padding:0 24px 40px;max-width:800px;margin:0 auto;">
+    <button onclick="window.print()" style="display:block;width:100%;padding:18px;background:#1e293b;color:white;border:none;border-radius:14px;font-size:16px;font-weight:800;cursor:pointer;margin-bottom:24px;">Guardar copia PDF</button>
+    ${equiposHtml}
+  </div>
+</body></html>`;
 
     const blob = new Blob([html], { type: 'text/html' });
-    const url = URL.createObjectURL(blob);
-    window.open(url, '_blank');
+    window.open(URL.createObjectURL(blob), '_blank');
   }
 
   async function guardar() {
@@ -1321,22 +1179,13 @@
       alert('Debes seleccionar el Técnico responsable y el Supervisor de turno.');
       return;
     }
-
     vibratePhone();
-
     const payload = buildPayload();
-
     let rutinas = JSON.parse(localStorage.getItem('rutinas') || '[]');
     let total = 0, marcados = 0;
-    payload.equipos.forEach(eq => {
-      eq.checks.forEach(ch => {
-        total++;
-        if (ch.marcado) marcados++;
-      });
-    });
+    payload.equipos.forEach(eq => { eq.checks.forEach(ch => { total++; if (ch.marcado) marcados++; }); });
     rutinas.unshift({ ...payload, porcentaje: total ? Math.round(marcados * 100 / total) : 0 });
     localStorage.setItem('rutinas', JSON.stringify(rutinas));
-
     const payloadSheet = {
       fecha: payload.fecha,
       linea: payload.linea,
@@ -1348,17 +1197,12 @@
         if (conNovedad.length > 0) {
           return { nombre: eq.nombre, checks: conNovedad };
         } else {
-          return {
-            nombre: eq.nombre,
-            checks: [{ texto: 'Inspección completada — sin novedades', marcado: true, comentario: '' }]
-          };
+          return { nombre: eq.nombre, checks: [{ texto: 'Inspección completada — sin novedades', marcado: true, comentario: '' }] };
         }
       })
     };
-
     sendOrQueue(payloadSheet);
     generarReporte(payload);
-
     app.producto = '';
     app.tecnico = '';
     app.supervisor = '';
@@ -1373,20 +1217,7 @@
     if (!rutinas.length) { alert('No hay rutinas almacenadas localmente'); return; }
     let csv = 'RUTINAS PMP - ' + new Date().toLocaleDateString('es-AR') + '\n\n';
     rutinas.forEach(r => {
-      const equipos = LINEAS[r.linea] || [];
-      csv += r.linea + ' | ' + new Date(r.fecha).toLocaleDateString('es-AR') + ' | ' + r.tecnico + ' | ' + r.supervisor + ' | ' + r.producto + ' | ' + r.porcentaje + '%\n';
-      equipos.forEach((eq, ei) => {
-        let hay = false;
-        eq.checks.forEach((cp, ci) => {
-          if (r.datos[ei] && r.datos[ei][ci] && r.datos[ei][ci].m) {
-            if (!hay) { csv += '\n' + eq.nombre + ':\n'; hay = true; }
-            csv += '  • ' + cp;
-            if (r.datos[ei][ci].c) csv += ' - ' + r.datos[ei][ci].c;
-            csv += '\n';
-          }
-        });
-      });
-      csv += '\n' + '='.repeat(80) + '\n\n';
+      csv += r.linea + ' | ' + new Date(r.fecha).toLocaleDateString('es-AR') + ' | ' + r.tecnico + ' | ' + r.supervisor + '\n\n';
     });
     const blob = new Blob([csv], { type: 'text/csv' });
     const a = document.createElement('a');
@@ -1395,288 +1226,219 @@
     a.click();
   }
 
+  // ── INSPECCIÓN MODAL ──────────────────────────────────────────────────────
+
+  let inspeccionPuntos = [];
+
+  function abrirModalInspeccion() {
+    if (!app.tecnico || !app.supervisor) {
+      mostrarToast('⚠ Seleccioná técnico y supervisor en Rutinas primero.', 'warning');
+      return;
+    }
+    const elTec = document.getElementById('insp-info-tecnico');
+    const elSup = document.getElementById('insp-info-supervisor');
+    if (elTec) elTec.textContent = '👤 ' + app.tecnico;
+    if (elSup) elSup.textContent = '🔍 ' + app.supervisor;
+    inspeccionPuntos = [];
+    renderizarPuntos();
+    agregarPunto();
+    document.getElementById('modalInspeccion').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cerrarModalInspeccion() {
+    const tieneDatos = inspeccionPuntos.some(p =>
+      p.linea || p.equipo || p.checkpoint || p.observacion.trim()
+    );
+    if (tieneDatos) {
+      if (!confirm('¿Cancelar la inspección? Se perderán los datos cargados.')) return;
+    }
+    document.getElementById('modalInspeccion').style.display = 'none';
+    document.body.style.overflow = '';
+    inspeccionPuntos = [];
+  }
+
+  function agregarPunto() {
+    inspeccionPuntos.push({ linea: '', equipo: '', checkpoint: '', observacion: '' });
+    renderizarPuntos();
+    setTimeout(() => {
+      const items = document.querySelectorAll('.insp-punto');
+      if (items.length) items[items.length - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+  }
+
+  function eliminarPunto(idx) {
+    if (inspeccionPuntos.length <= 1) return;
+    inspeccionPuntos.splice(idx, 1);
+    renderizarPuntos();
+  }
+
+  function onInspLineaChange(idx) {
+    const sel = document.getElementById(`insp-linea-${idx}`);
+    inspeccionPuntos[idx].linea = sel.value;
+    inspeccionPuntos[idx].equipo = '';
+    inspeccionPuntos[idx].checkpoint = '';
+    renderPuntoEquipo(idx);
+    renderPuntoCheckpoint(idx);
+  }
+
+  function onInspEquipoChange(idx) {
+    const sel = document.getElementById(`insp-equipo-${idx}`);
+    inspeccionPuntos[idx].equipo = sel.value;
+    inspeccionPuntos[idx].checkpoint = '';
+    renderPuntoCheckpoint(idx);
+  }
+
+  function onInspCheckChange(idx) {
+    const sel = document.getElementById(`insp-check-${idx}`);
+    inspeccionPuntos[idx].checkpoint = sel.value;
+  }
+
+  function onInspObsChange(idx) {
+    const ta = document.getElementById(`insp-obs-${idx}`);
+    inspeccionPuntos[idx].observacion = ta.value;
+  }
+
+  function renderPuntoEquipo(idx) {
+    const wrap = document.getElementById(`insp-equipo-wrap-${idx}`);
+    const linea = inspeccionPuntos[idx].linea;
+    if (!linea || !LINEAS[linea]) { wrap.innerHTML = ''; return; }
+    const opts = LINEAS[linea].map(e => `<option value="${e.nombre}">${e.nombre}</option>`).join('');
+    wrap.innerHTML = `<div class="field"><span class="label">Equipo</span>
+      <select id="insp-equipo-${idx}" onchange="onInspEquipoChange(${idx})">
+        <option value="">— Seleccioná equipo —</option>${opts}
+      </select></div>`;
+    if (inspeccionPuntos[idx].equipo) document.getElementById(`insp-equipo-${idx}`).value = inspeccionPuntos[idx].equipo;
+  }
+
+  function renderPuntoCheckpoint(idx) {
+    const wrap = document.getElementById(`insp-check-wrap-${idx}`);
+    const linea = inspeccionPuntos[idx].linea;
+    const equipoNombre = inspeccionPuntos[idx].equipo;
+    if (!linea || !equipoNombre) { wrap.innerHTML = ''; return; }
+    const equipoData = (LINEAS[linea] || []).find(e => e.nombre === equipoNombre);
+    if (!equipoData) { wrap.innerHTML = ''; return; }
+    const opts = equipoData.checks.map(c => `<option value="${c}">${c}</option>`).join('');
+    wrap.innerHTML = `<div class="field"><span class="label">Checkpoint</span>
+      <select id="insp-check-${idx}" onchange="onInspCheckChange(${idx})">
+        <option value="">— Seleccioná punto —</option>${opts}
+      </select></div>`;
+    if (inspeccionPuntos[idx].checkpoint) document.getElementById(`insp-check-${idx}`).value = inspeccionPuntos[idx].checkpoint;
+  }
+
+  function renderizarPuntos() {
+    const container = document.getElementById('insp-puntos-container');
+    container.innerHTML = '';
+    inspeccionPuntos.forEach((p, idx) => {
+      const lineasOpts = Object.keys(LINEAS).map(l =>
+        `<option value="${l}" ${p.linea === l ? 'selected' : ''}>${l}</option>`
+      ).join('');
+      const div = document.createElement('div');
+      div.className = 'insp-punto';
+      div.id = `insp-punto-${idx}`;
+      div.innerHTML = `
+        <div class="insp-punto-header">
+          <span class="insp-punto-num">Punto ${idx + 1}</span>
+          ${inspeccionPuntos.length > 1
+            ? `<button class="insp-btn-del" onclick="eliminarPunto(${idx})" type="button">
+                 <span class="material-icons-round" style="font-size:18px;">close</span>
+               </button>`
+            : ''}
+        </div>
+        <div class="field">
+          <span class="label">Línea</span>
+          <select id="insp-linea-${idx}" onchange="onInspLineaChange(${idx})">
+            <option value="">— Seleccioná línea —</option>
+            ${lineasOpts}
+          </select>
+        </div>
+        <div id="insp-equipo-wrap-${idx}"></div>
+        <div id="insp-check-wrap-${idx}"></div>
+        <div class="field" style="margin-top:4px;">
+          <span class="label">Observación</span>
+          <textarea id="insp-obs-${idx}" placeholder="Describí lo que encontraste..." rows="3"
+            onchange="onInspObsChange(${idx})" oninput="onInspObsChange(${idx})">${p.observacion}</textarea>
+        </div>`;
+      container.appendChild(div);
+      if (p.linea) renderPuntoEquipo(idx);
+      if (p.equipo) renderPuntoCheckpoint(idx);
+    });
+  }
+
+  async function enviarInspeccion() {
+    const tecnico    = app.tecnico?.trim() || '';
+    const supervisor = app.supervisor?.trim() || '';
+
+    if (!tecnico || !supervisor) {
+      mostrarToast('⚠ Seleccioná técnico y supervisor en Rutinas primero.', 'warning');
+      return;
+    }
+
+    for (let i = 0; i < inspeccionPuntos.length; i++) {
+      const p = inspeccionPuntos[i];
+      if (!p.linea || !p.equipo || !p.checkpoint || !p.observacion.trim()) {
+        mostrarToast(`⚠ Completá todos los campos del Punto ${i + 1}.`, 'warning');
+        return;
+      }
+    }
+
+    const btnEnviar = document.getElementById('insp-btn-enviar');
+    btnEnviar.disabled = true;
+    btnEnviar.innerHTML = '<span class="material-icons-round" style="animation:spin 1s linear infinite;">sync</span> Enviando...';
+
+    const payload = {
+      tipo:       'inspeccion',
+      tecnico,
+      supervisor,
+      fecha:      new Date().toISOString(),
+      puntos:     inspeccionPuntos
+    };
+
+    try {
+      const formData = new FormData();
+      formData.append('payload', JSON.stringify(payload));
+      await fetch(apiUrl, { method: 'POST', body: formData, mode: 'no-cors' });
+      inspeccionPuntos = [];
+      document.getElementById('modalInspeccion').style.display = 'none';
+      document.body.style.overflow = '';
+      mostrarToast('✓ Inspección enviada correctamente.', 'success');
+    } catch (err) {
+      mostrarToast('✗ Error al enviar. Revisá conexión.', 'error');
+    } finally {
+      btnEnviar.disabled = false;
+      btnEnviar.innerHTML = '<span class="material-icons-round">send</span> Enviar inspección';
+    }
+  }
+
+  function mostrarToast(msg, tipo) {
+    let toast = document.getElementById('pmp-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'pmp-toast';
+      document.body.appendChild(toast);
+    }
+    const colores = {
+      success: { bg: '#064E3B', border: '#10b981' },
+      warning: { bg: '#78350F', border: '#F59E0B' },
+      error:   { bg: '#7F1D1D', border: '#EF4444' }
+    };
+    const c = colores[tipo] || colores.success;
+    toast.style.cssText = `
+      position:fixed; bottom:100px; left:50%; transform:translateX(-50%);
+      background:${c.bg}; color:white; padding:14px 24px;
+      border-radius:14px; font-weight:700; font-size:14px;
+      border-left:4px solid ${c.border};
+      box-shadow:0 8px 24px rgba(0,0,0,0.2);
+      z-index:99999; opacity:1; transition:opacity 0.4s;
+      white-space:nowrap; max-width:90vw;`;
+    toast.textContent = msg;
+    clearTimeout(toast._timeout);
+    toast._timeout = setTimeout(() => { toast.style.opacity = '0'; }, 3000);
+  }
+
   render();
   updateOfflineBanner();
   processQueue();
-
-// ── INSPECCIÓN MODAL ──────────────────────────────────────────────────────────
-
-let inspeccionPuntos = [];
-
-function abrirModalInspeccion() {
-  // Verificar que haya técnico y supervisor cargados
-  if (!app.tecnico || !app.supervisor) {
-    mostrarToast('⚠ Seleccioná técnico y supervisor en Rutinas primero.', 'warning');
-    return;
-  }
-
-  // Mostrar técnico y supervisor en el header del modal
-  const elTec = document.getElementById('insp-info-tecnico');
-  const elSup = document.getElementById('insp-info-supervisor');
-  if (elTec) elTec.textContent = '👤 ' + app.tecnico;
-  if (elSup) elSup.textContent = '🔍 ' + app.supervisor;
-
-  inspeccionPuntos = [];
-  renderizarPuntos();
-  agregarPunto();
-  document.getElementById('modalInspeccion').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-
-function cerrarModalInspeccion() {
-  const tieneDatos = inspeccionPuntos.some(p =>
-    p.linea || p.equipo || p.checkpoint || p.observacion.trim()
-  );
-
-  if (tieneDatos) {
-    if (!confirm('¿Cancelar la inspección? Se perderán los datos cargados.')) return;
-  }
-
-  document.getElementById('modalInspeccion').style.display = 'none';
-  document.body.style.overflow = '';
-  inspeccionPuntos = [];
-}
-
-function agregarPunto() {
-  inspeccionPuntos.push({ linea: '', equipo: '', checkpoint: '', observacion: '' });
-  renderizarPuntos();
-  // Scroll al último punto
-  setTimeout(() => {
-    const items = document.querySelectorAll('.insp-punto');
-    if (items.length) items[items.length - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }, 100);
-}
-
-function eliminarPunto(idx) {
-  if (inspeccionPuntos.length <= 1) return;
-  inspeccionPuntos.splice(idx, 1);
-  renderizarPuntos();
-}
-
-function onInspLineaChange(idx) {
-  const sel = document.getElementById(`insp-linea-${idx}`);
-  inspeccionPuntos[idx].linea = sel.value;
-  inspeccionPuntos[idx].equipo = '';
-  inspeccionPuntos[idx].checkpoint = '';
-  renderPuntoEquipo(idx);
-  renderPuntoCheckpoint(idx);
-}
-
-function onInspEquipoChange(idx) {
-  const sel = document.getElementById(`insp-equipo-${idx}`);
-  inspeccionPuntos[idx].equipo = sel.value;
-  inspeccionPuntos[idx].checkpoint = '';
-  renderPuntoCheckpoint(idx);
-}
-
-function onInspCheckChange(idx) {
-  const sel = document.getElementById(`insp-check-${idx}`);
-  inspeccionPuntos[idx].checkpoint = sel.value;
-}
-
-function onInspObsChange(idx) {
-  const ta = document.getElementById(`insp-obs-${idx}`);
-  inspeccionPuntos[idx].observacion = ta.value;
-}
-
-function renderPuntoEquipo(idx) {
-  const wrap = document.getElementById(`insp-equipo-wrap-${idx}`);
-  const linea = inspeccionPuntos[idx].linea;
-  if (!linea || !LINEAS[linea]) {
-    wrap.innerHTML = '';
-    return;
-  }
-  const equipos = LINEAS[linea];
-  const opts = equipos.map(e => `<option value="${e.nombre}">${e.nombre}</option>`).join('');
-  wrap.innerHTML = `
-    <div class="field">
-      <span class="label">Equipo</span>
-      <select id="insp-equipo-${idx}" onchange="onInspEquipoChange(${idx})">
-        <option value="">— Seleccioná equipo —</option>
-        ${opts}
-      </select>
-    </div>`;
-  // Restaurar valor si existía
-  if (inspeccionPuntos[idx].equipo) {
-    document.getElementById(`insp-equipo-${idx}`).value = inspeccionPuntos[idx].equipo;
-  }
-}
-
-function renderPuntoCheckpoint(idx) {
-  const wrap = document.getElementById(`insp-check-wrap-${idx}`);
-  const linea = inspeccionPuntos[idx].linea;
-  const equipoNombre = inspeccionPuntos[idx].equipo;
-  if (!linea || !equipoNombre) {
-    wrap.innerHTML = '';
-    return;
-  }
-  const equipoData = (LINEAS[linea] || []).find(e => e.nombre === equipoNombre);
-  if (!equipoData) { wrap.innerHTML = ''; return; }
-
-  const opts = equipoData.checks.map(c => `<option value="${c}">${c}</option>`).join('');
-  wrap.innerHTML = `
-    <div class="field">
-      <span class="label">Checkpoint</span>
-      <select id="insp-check-${idx}" onchange="onInspCheckChange(${idx})">
-        <option value="">— Seleccioná punto —</option>
-        ${opts}
-      </select>
-    </div>`;
-  if (inspeccionPuntos[idx].checkpoint) {
-    document.getElementById(`insp-check-${idx}`).value = inspeccionPuntos[idx].checkpoint;
-  }
-}
-
-function renderizarPuntos() {
-  const container = document.getElementById('insp-puntos-container');
-  container.innerHTML = '';
-  inspeccionPuntos.forEach((p, idx) => {
-    const lineasOpts = Object.keys(LINEAS).map(l =>
-      `<option value="${l}" ${p.linea === l ? 'selected' : ''}>${l}</option>`
-    ).join('');
-
-    const div = document.createElement('div');
-    div.className = 'insp-punto';
-    div.id = `insp-punto-${idx}`;
-    div.innerHTML = `
-      <div class="insp-punto-header">
-        <span class="insp-punto-num">Punto ${idx + 1}</span>
-        ${inspeccionPuntos.length > 1
-          ? `<button class="insp-btn-del" onclick="eliminarPunto(${idx})" type="button">
-               <span class="material-icons-round" style="font-size:18px;">close</span>
-             </button>`
-          : ''}
-      </div>
-      <div class="field">
-        <span class="label">Línea</span>
-        <select id="insp-linea-${idx}" onchange="onInspLineaChange(${idx})">
-          <option value="">— Seleccioná línea —</option>
-          ${lineasOpts}
-        </select>
-      </div>
-      <div id="insp-equipo-wrap-${idx}"></div>
-      <div id="insp-check-wrap-${idx}"></div>
-      <div class="field" style="margin-top:4px;">
-        <span class="label">Observación</span>
-        <textarea id="insp-obs-${idx}" placeholder="Describí lo que encontraste..." rows="3"
-          onchange="onInspObsChange(${idx})"
-          oninput="onInspObsChange(${idx})">${p.observacion}</textarea>
-      </div>`;
-    container.appendChild(div);
-
-    // Si ya tiene línea, renderizar equipo y checkpoint
-    if (p.linea) renderPuntoEquipo(idx);
-    if (p.equipo) renderPuntoCheckpoint(idx);
-  });
-}
-
-async function enviarInspeccion() {
-  const tecnico    = app.tecnico?.trim() || '';
-  const supervisor = app.supervisor?.trim() || '';
-
-  if (!tecnico || !supervisor) {
-    mostrarToast('⚠ Seleccioná técnico y supervisor en Rutinas primero.', 'warning');
-    return;
-  }
-
-  for (let i = 0; i < inspeccionPuntos.length; i++) {
-    const p = inspeccionPuntos[i];
-    if (!p.linea || !p.equipo || !p.checkpoint || !p.observacion.trim()) {
-      mostrarToast(`⚠ Completá todos los campos del Punto ${i + 1}.`, 'warning');
-      return;
-    }
-  }
-
-  const btnEnviar = document.getElementById('insp-btn-enviar');
-  btnEnviar.disabled = true;
-  btnEnviar.innerHTML = '<span class="material-icons-round" style="animation:spin 1s linear infinite;">sync</span> Enviando...';
-
-  const payload = {
-    tipo:       'inspeccion',
-    tecnico,
-    supervisor,
-    fecha:      new Date().toISOString(),
-    puntos:     inspeccionPuntos
-  };
-
-  try {
-    const formData = new FormData();
-    formData.append('payload', JSON.stringify(payload));
-    await fetch(apiUrl, { method: 'POST', body: formData, mode: 'no-cors' });
-    inspeccionPuntos = [];
-    document.getElementById('modalInspeccion').style.display = 'none';
-    document.body.style.overflow = '';
-    mostrarToast('✓ Inspección enviada correctamente.', 'success');
-  } catch (err) {
-    mostrarToast('✗ Error al enviar. Revisá conexión.', 'error');
-  } finally {
-    btnEnviar.disabled = false;
-    btnEnviar.innerHTML = '<span class="material-icons-round">send</span> Enviar inspección';
-  }
-}
-
-  // Validar cada punto
-  for (let i = 0; i < inspeccionPuntos.length; i++) {
-    const p = inspeccionPuntos[i];
-    if (!p.linea || !p.equipo || !p.checkpoint || !p.observacion.trim()) {
-      mostrarToast(`⚠ Completá todos los campos del Punto ${i + 1}.`, 'warning');
-      return;
-    }
-  }
-
-  const payload = {
-    tipo:       'inspeccion',
-    tecnico,
-    supervisor,
-    fecha:      new Date().toISOString(),
-    puntos:     inspeccionPuntos
-  };
-
-  const btnEnviar = document.getElementById('insp-btn-enviar');
-  btnEnviar.disabled = true;
-  btnEnviar.innerHTML = '<span class="material-icons-round" style="animation:spin 1s linear infinite;">sync</span> Enviando...';
-
-  try {
-    const formData = new FormData();
-    formData.append('payload', JSON.stringify(payload));
-    const res = await fetch(apiUrl, { method: 'POST', body: formData, mode: 'no-cors' });
-    cerrarModalInspeccion();
-    mostrarToast('✓ Inspección enviada correctamente.', 'success');
-  } catch (err) {
-    mostrarToast('✗ Error al enviar. Revisá conexión.', 'error');
-  } finally {
-    btnEnviar.disabled = false;
-    btnEnviar.innerHTML = '<span class="material-icons-round">send</span> Enviar inspección';
-  }
-}
-
-function mostrarToast(msg, tipo) {
-  let toast = document.getElementById('pmp-toast');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'pmp-toast';
-    document.body.appendChild(toast);
-  }
-  const colores = {
-    success: { bg: '#064E3B', border: '#10b981' },
-    warning: { bg: '#78350F', border: '#F59E0B' },
-    error:   { bg: '#7F1D1D', border: '#EF4444' }
-  };
-  const c = colores[tipo] || colores.success;
-  toast.style.cssText = `
-    position:fixed; bottom:100px; left:50%; transform:translateX(-50%);
-    background:${c.bg}; color:white; padding:14px 24px;
-    border-radius:14px; font-weight:700; font-size:14px;
-    border-left:4px solid ${c.border};
-    box-shadow:0 8px 24px rgba(0,0,0,0.2);
-    z-index:99999; opacity:1; transition:opacity 0.4s;
-    white-space:nowrap; max-width:90vw;`;
-  toast.textContent = msg;
-  clearTimeout(toast._timeout);
-  toast._timeout = setTimeout(() => { toast.style.opacity = '0'; }, 3000);
-}
-  
 </script>
 </body>
-
 </html>
