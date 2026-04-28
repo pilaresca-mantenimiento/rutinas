@@ -45,16 +45,20 @@
       font-size: 15px;
     }
 
+    /* Wrapper sticky que une header + tabs */
+    .app-top {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
     .header {
       background: rgba(16, 185, 129, 0.95);
       backdrop-filter: var(--surface-blur);
       -webkit-backdrop-filter: var(--surface-blur);
-      padding: 24px 16px;
+      padding: 20px 16px 16px;
       color: white;
       text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 50;
       box-shadow: 0 4px 24px rgba(16, 185, 129, 0.2);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
@@ -232,6 +236,151 @@
       background: var(--primary);
       color: white;
       box-shadow: 0 4px 10px rgba(16,185,129,0.3);
+    }
+
+    /* Badge de progreso por equipo */
+    .equipo-progress {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: auto;
+      margin-right: 10px;
+    }
+    .equipo-progress-badge {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 20px;
+      background: #f1f5f9;
+      color: #64748b;
+      transition: all 0.3s;
+    }
+    .equipo-progress-badge.tiene-fallas {
+      background: #fef2f2;
+      color: #ef4444;
+    }
+    .equipo-progress-badge.completo {
+      background: #ecfdf5;
+      color: #059669;
+    }
+
+    /* Botones expandir/colapsar todo */
+    .expand-controls {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      justify-content: flex-end;
+    }
+    .btn-expand {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-soft);
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .btn-expand:active { background: #f1f5f9; transform: scale(0.97); }
+
+    /* Header compacto — desactivado: interfiere con sticky tabs */
+
+    /* Textarea auto-resize */
+    .check-comment textarea {
+      width: 100%;
+      min-height: 72px;
+      max-height: 200px;
+      resize: none;
+      background: white;
+      border-color: #fca5a5;
+      overflow-y: auto;
+    }
+
+    /* Modal de confirmación propio */
+    .confirm-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      z-index: 99998;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      animation: fadeIn 0.2s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .confirm-sheet {
+      background: white;
+      width: 100%;
+      max-width: 800px;
+      border-radius: 24px 24px 0 0;
+      padding: 28px 24px max(24px, env(safe-area-inset-bottom));
+      animation: slideUp 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+    }
+    .confirm-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .confirm-body {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .confirm-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .confirm-cancel {
+      flex: 1;
+      padding: 14px;
+      background: #f1f5f9;
+      color: #334155;
+      border: none;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .confirm-ok {
+      flex: 2;
+      padding: 14px;
+      border: none;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      color: white;
+    }
+    .confirm-ok.danger { background: var(--danger); }
+    .confirm-ok.primary { background: var(--primary); }
+
+    /* Modal resumen antes de enviar */
+    .resumen-stat {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .resumen-stat:last-child { border-bottom: none; }
+    .resumen-stat-num {
+      font-size: 28px;
+      font-weight: 800;
+      min-width: 44px;
+      text-align: center;
+    }
+    .resumen-stat-label {
+      font-size: 14px;
+      color: var(--text-soft);
+      font-weight: 500;
     }
 
     .equipo-toggle {
@@ -467,12 +616,10 @@
     .btn-otro:hover { background: #e2e8f0; color: #0f172a; }
 
     .tabs-container {
-      position: sticky;
-      top: 83px;
       z-index: 40;
       background: var(--bg-gradient);
-      padding: 10px 20px;
-      box-shadow: 0 10px 10px -10px rgba(0,0,0,0.05);
+      padding: 8px 16px 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     }
 
     .tabs {
@@ -879,6 +1026,7 @@
   <span class="material-icons-round">cloud_off</span> Sin conexión. Guardando localmente...
 </div>
 
+<div class="app-top">
 <div class="header">
   <h1><span class="material-icons-round">engineering</span> RUTINAS PMP</h1>
   <p>Inspección Inteligente - Pilares</p>
@@ -903,6 +1051,7 @@
       <span class="tab-label">Pañol</span>
     </div>
   </div>
+</div>
 </div>
 
 <div class="modal-overlay" id="loginModal">
@@ -1046,7 +1195,7 @@ let paniolData = [];  // [['M0001MAS', 'CADENA AC07404672...'], ...]
       save();
       if (checkLogin()) { render(); }
     } else {
-      alert('Ingrese un email válido');
+      mostrarToast('Ingresá un email válido.', 'warning');
     }
   }
 
@@ -1080,16 +1229,6 @@ let paniolData = [];  // [['M0001MAS', 'CADENA AC07404672...'], ...]
     render();
   }
 
-  function limpiarLinea() {
-  if (confirm("¿Estás seguro de que deseas limpiar la rutina actual?")) {
-    app.datos     = {};
-    app.repuestos = {};
-    app.abiertos  = {};
-    save();
-    render();
-  }
-}
-
   function updateBtnGuardar() {
     const btn = document.getElementById('btnGuardar');
     if (!btn) return;
@@ -1105,9 +1244,9 @@ let paniolData = [];  // [['M0001MAS', 'CADENA AC07404672...'], ...]
     if (!app.datos[ei][ci]) app.datos[ei][ci] = { m: false, c: '' };
     app.datos[ei][ci].m = !app.datos[ei][ci].m;
 
-    // Al desmarcar: limpiar comentario y repuestos asociados
+    // Al desmarcar: limpiar todo y eliminar la clave para no contaminar el badge
     if (!app.datos[ei][ci].m) {
-      app.datos[ei][ci].c = '';
+      delete app.datos[ei][ci]; // eliminar clave completamente
       // Limpiar textarea en DOM
       const checkEl = document.querySelector(`[data-checkpoint="${ei}-${ci}"]`);
       if (checkEl) {
@@ -1115,7 +1254,7 @@ let paniolData = [];  // [['M0001MAS', 'CADENA AC07404672...'], ...]
         if (ta) ta.value = '';
       }
       // Limpiar repuestos
-      if (app.repuestos && app.repuestos[ei]) {
+      if (app.repuestos?.[ei]) {
         delete app.repuestos[ei][ci];
         localStorage.setItem('repuestos_' + app.linea, JSON.stringify(app.repuestos));
       }
@@ -1125,6 +1264,7 @@ let paniolData = [];  // [['M0001MAS', 'CADENA AC07404672...'], ...]
     vibratePhone();
     save();
     updateCheckpointDOM(ei, ci);
+    actualizarBadgeEquipo(ei);
   }
 
   function updateComment(ei, ci, value) {
@@ -1134,10 +1274,33 @@ let paniolData = [];  // [['M0001MAS', 'CADENA AC07404672...'], ...]
     save();
   }
 
+  function actualizarBadgeEquipo(ei) {
+    const eq = (LINEAS[app.linea] || [])[ei];
+    if (!eq) return;
+    const badgeEl = document.querySelector(`[data-equipo="${ei}"] .equipo-progress-badge`);
+    if (!badgeEl) return;
+    const datosEquipo    = app.datos[ei] || {};
+    const totalChecks    = eq.checks.length;
+    const marcados       = Object.values(datosEquipo).filter(d => d.m === true).length;
+    const inspeccionados = Object.values(datosEquipo).filter(d => d.m === true || d.c).length;
+
+    badgeEl.className = 'equipo-progress-badge' +
+      (marcados > 0 ? ' tiene-fallas' : inspeccionados === totalChecks ? ' completo' : '');
+    badgeEl.textContent = marcados > 0
+      ? `⚠ ${marcados} falla${marcados > 1 ? 's' : ''}`
+      : inspeccionados > 0 ? `✓ ${inspeccionados}/${totalChecks}` : `${totalChecks}`;
+
+    // Actualizar badge del tab Rutinas
+    const totalFallas = Object.values(app.datos).reduce((sum, eq) =>
+      sum + Object.values(eq).filter(d => d.m).length, 0);
+    const labelEl = document.querySelector('#tab-rutinas .tab-label');
+    if (labelEl) labelEl.textContent = totalFallas > 0 ? `Rutinas (${totalFallas})` : 'Rutinas';
+  }
+
   function updateCheckpointDOM(ei, ci) {
     const checkEl = document.querySelector(`[data-checkpoint="${ei}-${ci}"]`);
     if (!checkEl) return;
-    const d = app.datos[ei] && app.datos[ei][ci];
+    const d = app.datos?.[ei]?.[ci];
     if (d && d.m) checkEl.classList.add('marcado');
     else checkEl.classList.remove('marcado');
   }
@@ -1454,18 +1617,44 @@ function renderBadges(ei, ci) {
       </div>
     </div>`;
 
+    // Badge de fallas en tab Rutinas
+    const totalFallas = Object.values(app.datos).reduce((sum, eq) =>
+      sum + Object.values(eq).filter(d => d.m).length, 0);
+    const labelEl = document.querySelector('#tab-rutinas .tab-label');
+    if (labelEl) labelEl.textContent = totalFallas > 0 ? `Rutinas (${totalFallas})` : 'Rutinas';
+
+    html += `<div class="expand-controls">
+      <button class="btn-expand" onclick="expandirTodo(true)">
+        <span class="material-icons-round" style="font-size:14px;">unfold_more</span> Expandir todo
+      </button>
+      <button class="btn-expand" onclick="expandirTodo(false)">
+        <span class="material-icons-round" style="font-size:14px;">unfold_less</span> Colapsar todo
+      </button>
+    </div>`;
+
     equipos.forEach((eq, ei) => {
+      // Calcular progreso del equipo
+      const totalChecks    = eq.checks.length;
+      const datosEquipo    = app.datos[ei] || {};
+      const marcados       = Object.values(datosEquipo).filter(d => d.m === true).length;
+      const inspeccionados = Object.values(datosEquipo).filter(d => d.m === true || d.c).length;
+      const progressClass  = marcados > 0 ? 'tiene-fallas' : inspeccionados === totalChecks ? 'completo' : '';
+      const progressLabel  = marcados > 0
+        ? `⚠ ${marcados} falla${marcados > 1 ? 's' : ''}`
+        : inspeccionados > 0 ? `✓ ${inspeccionados}/${totalChecks}` : `${totalChecks}`;
+
       html += `<div class="equipo ${app.abiertos[ei] ? 'abierto' : ''}" data-equipo="${ei}">
         <div class="equipo-head" onclick="app.abiertos[${ei}]=!app.abiertos[${ei}]; vibratePhone(); save(); toggleEquipoDOM(${ei})">
           <div class="equipo-nombre"><span class="number">${ei + 1}</span> <span>${eq.nombre}</span></div>
+          <div class="equipo-progress">
+            <span class="equipo-progress-badge ${progressClass}">${progressLabel}</span>
+          </div>
           <div class="equipo-toggle"><span class="material-icons-round">expand_more</span></div>
         </div>
         <div class="equipo-body">`;
 
       eq.checks.forEach((cp, ci) => {
-        if (!app.datos[ei]) app.datos[ei] = {};
-        if (!app.datos[ei][ci]) app.datos[ei][ci] = { m: false, c: '' };
-        const d = app.datos[ei][ci];
+        const d = app.datos?.[ei]?.[ci] || { m: false, c: '' };
         html += `<div class="checkpoint ${d.m ? 'marcado' : ''}" data-checkpoint="${ei}-${ci}">
           <div class="check-header">
             <div class="check-texto">${cp}</div>
@@ -1515,7 +1704,7 @@ function renderBadges(ei, ci) {
     html += `
     <div class="action-dock">
       <button class="btn-otro" onclick="limpiarLinea()" title="Resetear datos"><span class="material-icons-round">backspace</span></button>
-      <button class="btn-guardar" id="btnGuardar" onclick="guardar()" ${!app.tecnico || !app.supervisor ? 'disabled' : ''}><span class="material-icons-round">send</span> Finalizar y Enviar</button>
+      <button class="btn-guardar" id="btnGuardar" onclick="mostrarResumen()" ${!app.tecnico || !app.supervisor ? 'disabled' : ''}><span class="material-icons-round">summarize</span> Revisar y Enviar</button>
       <button class="btn-otro" onclick="exportar()" title="Backup CSV"><span class="material-icons-round">download</span></button>
     </div>`;
 
@@ -1560,7 +1749,7 @@ function renderBadges(ei, ci) {
   async function sendOrQueue(payloadSheet, forceQueue = false) {
     if (!navigator.onLine || forceQueue) {
       enqueueOffline([{ id: Date.now(), type: payloadSheet.tipo || 'rutina', payloadSheet }]);
-      alert('Guardado seguro en tu celular. El sistema lo sincronizará apenas enganches 4G o WiFi automáticamente.');
+      mostrarToast('Sin conexión — guardado localmente. Se enviará al volver.', 'warning');
       return;
     }
     try {
@@ -1571,7 +1760,7 @@ function renderBadges(ei, ci) {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'payload=' + encodeURIComponent(JSON.stringify(payloadSheet))
       });
-      alert('¡Subido exitosamente a la nube de Planta!');
+      mostrarToast('✓ Enviado correctamente a la nube de Planta.', 'success');
     } catch (err) {
       sendOrQueue(payloadSheet, true);
     } finally {
@@ -1582,7 +1771,7 @@ function renderBadges(ei, ci) {
   async function guardarTicket() {
     const area = document.getElementById('ticketArea').value;
     const desc = document.getElementById('ticketDesc').value;
-    if (!area || !desc) return alert('Completa el área y la descripción');
+    if (!area || !desc) { mostrarToast('Completá el área y la descripción.', 'warning'); return; }
     const payloadSheet = {
       tipo: 'ticket',
       fecha: new Date().toISOString(),
@@ -1699,7 +1888,7 @@ function renderBadges(ei, ci) {
 
   async function guardar() {
     if (!app.tecnico || !app.supervisor) {
-      alert('Debes seleccionar el Técnico responsable y el Supervisor de turno.');
+      mostrarToast('⚠ Seleccioná técnico y supervisor antes de enviar.', 'warning');
       return;
     }
     vibratePhone();
@@ -1779,7 +1968,7 @@ function renderBadges(ei, ci) {
 
   function exportar() {
     const rutinas = JSON.parse(localStorage.getItem('rutinas') || '[]');
-    if (!rutinas.length) { alert('No hay rutinas almacenadas localmente'); return; }
+    if (!rutinas.length) { mostrarToast('No hay rutinas almacenadas localmente.', 'warning'); return; }
     let csv = 'RUTINAS PMP - ' + new Date().toLocaleDateString('es-AR') + '\n\n';
     rutinas.forEach(r => {
       csv += r.linea + ' | ' + new Date(r.fecha).toLocaleDateString('es-AR') + ' | ' + r.tecnico + ' | ' + r.supervisor + '\n\n';
@@ -1791,7 +1980,125 @@ function renderBadges(ei, ci) {
     a.click();
   }
 
-  // ── INSPECCIÓN MODAL ──────────────────────────────────────────────────────
+  // ── EXPANDIR / COLAPSAR TODO ─────────────────────────────────────────────
+  function expandirTodo(abrir) {
+    const equipos = LINEAS[app.linea] || [];
+    equipos.forEach((_, ei) => {
+      app.abiertos[ei] = abrir;
+      toggleEquipoDOM(ei);
+    });
+    save();
+  }
+
+  // ── MODAL DE CONFIRMACIÓN PROPIO (reemplaza confirm() nativo) ────────────
+  function mostrarConfirm({ titulo, cuerpo, labelOk = 'Confirmar', tipo = 'danger', onOk }) {
+    const overlay = document.createElement('div');
+    overlay.className = 'confirm-overlay';
+    overlay.innerHTML = `
+      <div class="confirm-sheet">
+        <div class="confirm-title">${titulo}</div>
+        <div class="confirm-body">${cuerpo}</div>
+        <div class="confirm-actions">
+          <button class="confirm-cancel" id="confirmCancel">Cancelar</button>
+          <button class="confirm-ok ${tipo}" id="confirmOk">${labelOk}</button>
+        </div>
+      </div>`;
+    document.body.appendChild(overlay);
+    overlay.querySelector('#confirmCancel').onclick = () => overlay.remove();
+    overlay.querySelector('#confirmOk').onclick = () => { overlay.remove(); onOk(); };
+    overlay.onclick = e => { if (e.target === overlay) overlay.remove(); };
+  }
+
+  // ── MODAL RESUMEN ANTES DE ENVIAR ────────────────────────────────────────
+  function mostrarResumen() {
+    if (!app.tecnico || !app.supervisor) {
+      // Scroll al primer campo faltante
+      const seccion = document.querySelector('.section.grid5');
+      if (seccion) seccion.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      mostrarToast('⚠ Seleccioná técnico y supervisor antes de enviar.', 'warning');
+      return;
+    }
+
+    const equipos = LINEAS[app.linea] || [];
+    let totalChecks = 0, fallas = 0, repuestosTotal = 0;
+    equipos.forEach((eq, ei) => {
+      eq.checks.forEach((_, ci) => {
+        totalChecks++;
+        if (app.datos[ei]?.[ci]?.m) fallas++;
+        if (Array.isArray(app.repuestos?.[ei]?.[ci])) repuestosTotal += app.repuestos[ei][ci].length;
+      });
+    });
+    const inspeccionados = equipos.reduce((sum, _, ei) =>
+      sum + Object.keys(app.datos[ei] || {}).length, 0);
+
+    const overlay = document.createElement('div');
+    overlay.className = 'confirm-overlay';
+    overlay.innerHTML = `
+      <div class="confirm-sheet">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;">
+          <span class="material-icons-round" style="font-size:24px; color:var(--primary);">summarize</span>
+          <div class="confirm-title" style="margin:0;">Resumen de rutina</div>
+        </div>
+        <div style="background:#f8fafc; border-radius:14px; padding:4px 16px; margin-bottom:20px;">
+          <div class="resumen-stat">
+            <div class="resumen-stat-num" style="color:#10b981;">${inspeccionados}</div>
+            <div class="resumen-stat-label">Puntos inspeccionados de ${totalChecks}</div>
+          </div>
+          <div class="resumen-stat">
+            <div class="resumen-stat-num" style="color:${fallas > 0 ? '#ef4444' : '#10b981'};">${fallas}</div>
+            <div class="resumen-stat-label">Fallas / novedades detectadas</div>
+          </div>
+          <div class="resumen-stat">
+            <div class="resumen-stat-num" style="color:#f59e0b;">${repuestosTotal}</div>
+            <div class="resumen-stat-label">Repuestos solicitados al pañol</div>
+          </div>
+        </div>
+        <div style="font-size:13px; color:var(--text-soft); margin-bottom:20px; line-height:1.5;">
+          <strong>${app.tecnico}</strong> · ${app.linea}<br>
+          Supervisor: <strong>${app.supervisor}</strong>
+          ${app.producto ? `<br>Producto: ${app.producto}` : ''}
+        </div>
+        <div class="confirm-actions">
+          <button class="confirm-cancel" id="resumenCancel">Volver</button>
+          <button class="confirm-ok primary" id="resumenOk">
+            <span class="material-icons-round" style="font-size:18px; vertical-align:middle; margin-right:6px;">send</span>
+            Enviar rutina
+          </button>
+        </div>
+      </div>`;
+    document.body.appendChild(overlay);
+    overlay.querySelector('#resumenCancel').onclick = () => overlay.remove();
+    overlay.querySelector('#resumenOk').onclick = () => { overlay.remove(); guardar(); };
+    overlay.onclick = e => { if (e.target === overlay) overlay.remove(); };
+  }
+
+  // Header compacto desactivado — ver comentario en CSS
+
+  // ── TEXTAREA AUTO-RESIZE ─────────────────────────────────────────────────
+  document.addEventListener('input', e => {
+    if (e.target.tagName === 'TEXTAREA' && e.target.closest('.check-comment')) {
+      e.target.style.height = 'auto';
+      e.target.style.height = Math.min(e.target.scrollHeight, 200) + 'px';
+    }
+  });
+
+  // ── LIMPIAR LÍNEA con modal propio ────────────────────────────────────────
+  function limpiarLinea() {
+    mostrarConfirm({
+      titulo: 'Limpiar rutina',
+      cuerpo: '¿Seguro que querés borrar todos los datos de la rutina actual? Esta acción no se puede deshacer.',
+      labelOk: 'Sí, limpiar',
+      tipo: 'danger',
+      onOk: () => {
+        app.datos     = {};
+        app.repuestos = {};
+        app.abiertos  = {};
+        save();
+        render();
+        mostrarToast('Rutina limpiada.', 'success');
+      }
+    });
+  }
 
   let inspeccionPuntos = [];
 
@@ -1816,7 +2123,18 @@ function renderBadges(ei, ci) {
       p.linea || p.equipo || p.checkpoint || p.observacion.trim()
     );
     if (tieneDatos) {
-      if (!confirm('¿Cancelar la inspección? Se perderán los datos cargados.')) return;
+      mostrarConfirm({
+        titulo: 'Cancelar inspección',
+        cuerpo: '¿Seguro? Se perderán todos los puntos cargados.',
+        labelOk: 'Sí, cancelar',
+        tipo: 'danger',
+        onOk: () => {
+          document.getElementById('modalInspeccion').style.display = 'none';
+          document.body.style.overflow = '';
+          inspeccionPuntos = [];
+        }
+      });
+      return;
     }
     document.getElementById('modalInspeccion').style.display = 'none';
     document.body.style.overflow = '';
