@@ -136,7 +136,47 @@
       box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
     }
 
-    .login-status { padding: 12px 20px !important; border-radius: 16px !important; }
+    .login-status {
+      padding: 12px 20px !important;
+      border-radius: 16px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+    }
+    .login-status .login-email {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      flex: 1;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .login-status .login-email span.material-icons-round {
+      flex-shrink: 0;
+    }
+    .login-status .login-email-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 14px;
+    }
+    .login-status .login-btn-salir {
+      flex-shrink: 0;
+      padding: 8px 14px;
+      background: #f1f5f9;
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
 
     .equipo {
       background: white;
@@ -151,7 +191,6 @@
     .equipo.abierto {
       border-color: var(--primary);
       box-shadow: 0 8px 30px rgba(16, 185, 129, 0.12);
-      transform: translateY(-2px);
     }
 
     .equipo-head {
@@ -225,29 +264,32 @@
     .equipo.abierto .equipo-body {
       max-height: 2500px;
       opacity: 1;
+      overflow: visible;
       padding: 8px 20px 20px 20px;
       border-top: 1px solid #f1f5f9;
     }
 
     .checkpoint {
-      background: white;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 16px 18px;
-      margin-top: 12px;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 16px 18px;
+  padding-left: 22px;
+  margin-top: 12px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: visible;
+}
 
-    .checkpoint::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 4px;
-      background: #cbd5e1;
-      transition: background 0.3s ease;
-    }
+.checkpoint::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: #cbd5e1;
+  transition: background 0.3s ease;
+  border-radius: 14px 0 0 14px;
+}
 
     .checkpoint:hover { border-color: #cbd5e1; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); }
 
@@ -329,7 +371,7 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .checkpoint.marcado .check-comment { max-height: 200px; opacity: 1; margin-top: 14px; }
+    .checkpoint.marcado .check-comment { max-height: 600px; opacity: 1; margin-top: 14px; }
 
     .check-comment textarea {
       width: 100%;
@@ -419,7 +461,6 @@
     .btn-guardar:hover:not(:disabled) {
       background: var(--primary-dark);
       box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
-      transform: translateY(-2px);
     }
 
     .btn-otro { background: #f1f5f9; color: #334155; }
@@ -438,28 +479,47 @@
       display: flex;
       background: rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(10px);
-      padding: 6px;
+      padding: 5px;
       border-radius: 16px;
       max-width: 800px;
       margin: 0 auto;
       border: 1px solid rgba(255, 255, 255, 0.9);
       box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      gap: 2px;
     }
 
     .tab {
       flex: 1;
       text-align: center;
-      padding: 12px;
+      padding: 10px 4px;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 11px;
       color: var(--text-soft);
       cursor: pointer;
       border-radius: 12px;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 4px;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .tab .material-icons-round {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .tab .tab-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
     }
 
     .tab:hover:not(.active) { background: rgba(255, 255, 255, 0.8); color: var(--text); }
@@ -468,7 +528,17 @@
       background: white;
       color: var(--primary);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transform: scale(1.02);
+    }
+
+    @media (min-width: 480px) {
+      .tab {
+        flex-direction: row;
+        gap: 6px;
+        font-size: 13px;
+        padding: 11px 8px;
+      }
+      .tab .tab-label { font-size: 13px; }
+      .tab .material-icons-round { font-size: 18px; }
     }
 
     .alert-banner {
@@ -617,6 +687,154 @@
       from { transform: rotate(0deg); }
       to   { transform: rotate(360deg); }
     }
+
+.repuesto-wrap { margin-top: 12px; position: relative; }
+.repuesto-label {
+  font-size: 11px; font-weight: 800; color: #64748b;
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 6px; display: block;
+}
+.repuesto-input-row { display: flex; gap: 8px; align-items: center; }
+.repuesto-input {
+  flex: 1; padding: 10px 14px; background: #f8fafc;
+  border: 1.5px solid #e2e8f0; border-radius: 10px;
+  font-size: 14px; font-weight: 500; color: #0f172a; transition: all .25s;
+  min-width: 0;
+}
+.repuesto-input:focus {
+  outline: none; border-color: var(--primary);
+  background: white; box-shadow: 0 0 0 3px rgba(16,185,129,.1);
+}
+.repuesto-sugerencias {
+  position: absolute;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.18);
+  z-index: 99999;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: none;
+}
+.repuesto-sugerencias.visible { display: block; }
+.repuesto-item {
+  padding: 12px 14px; cursor: pointer;
+  border-bottom: 1px solid #f1f5f9; transition: background .15s;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.repuesto-item:last-child { border-bottom: none; }
+.repuesto-item:active { background: #ecfdf5; }
+.repuesto-item-code {
+  font-size: 11px; font-weight: 800; color: var(--primary);
+  letter-spacing: 0.5px;
+}
+.repuesto-item-desc {
+  font-size: 13px; color: #334155; font-weight: 500;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Badge rediseñado — layout limpio con botón eliminar grande */
+.repuesto-badge {
+  display: none;
+  margin-top: 8px;
+  border: 2px solid #10b981;
+  border-radius: 12px;
+}
+.repuesto-badge.visible { display: flex; align-items: stretch; }
+.repuesto-badge-info {
+  flex: 1; min-width: 0;
+  padding: 12px 14px;
+  display: flex; flex-direction: column; gap: 5px;
+  background: white;
+  border-radius: 10px 0 0 10px;
+}
+.repuesto-badge-code {
+  font-size: 15px; font-weight: 800; color: #059669;
+  letter-spacing: 0.5px; line-height: 1.2;
+}
+.repuesto-badge-desc {
+  font-size: 13px; color: #374151; font-weight: 500;
+  line-height: 1.45;
+  word-break: break-word;
+  white-space: normal;
+}
+.repuesto-badge-del {
+  flex: 0 0 48px;
+  background: #fef2f2;
+  border: none;
+  border-left: 2px solid #fca5a5;
+  border-radius: 0 10px 10px 0;
+  color: #ef4444;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.repuesto-badge-del:active { background: #fee2e2; }
+
+/* ── PAÑOL ── */
+.paniol-header-badge {
+  background: linear-gradient(135deg, #064e3b, #065f46);
+  color: white; border-radius: 16px; padding: 18px 20px;
+  margin-bottom: 20px; display: flex; align-items: center;
+  justify-content: space-between; gap: 8px;
+}
+/* En pantallas < 420px ocultar texto "Excel", solo mostrar ícono */
+@media (max-width: 420px) {
+  .paniol-excel-label { display: none; }
+}
+.paniol-filtros {
+  background: white; border: 1px solid #e2e8f0; border-radius: 16px;
+  padding: 16px 20px; margin-bottom: 16px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px;
+}
+.paniol-table-wrap {
+  background: white; border: 1px solid #e2e8f0; border-radius: 16px;
+  overflow: hidden; margin-bottom: 100px;
+}
+.paniol-table { width: 100%; border-collapse: collapse; }
+.paniol-table th {
+  background: #f8fafc; padding: 12px 16px; text-align: left;
+  font-size: 11px; font-weight: 800; color: #64748b;
+  text-transform: uppercase; letter-spacing: 1px;
+  border-bottom: 1px solid #e2e8f0;
+}
+.paniol-table td {
+  padding: 12px 16px; border-bottom: 1px solid #f1f5f9;
+  font-size: 13px; color: #334155; vertical-align: top;
+}
+.paniol-table tr:last-child td { border-bottom: none; }
+.paniol-table tr:hover td { background: #f8fafc; }
+.paniol-badge-linea {
+  display: inline-block; padding: 2px 8px; border-radius: 6px;
+  font-size: 11px; font-weight: 800; background: #ecfdf5; color: #065f46;
+}
+.paniol-badge-estado {
+  display: inline-block; padding: 4px 10px; border-radius: 20px;
+  font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.paniol-estado-pendiente { background: #fef9c3; color: #854d0e; }
+.paniol-estado-entregado  { background: #dcfce7; color: #166534; }
+.paniol-estado-observado  { background: #fef2f2; color: #991b1b; }
+.paniol-estado-vencido    { background: #f1f5f9; color: #475569; }
+.paniol-edit-row td { background: #f0fdf4 !important; }
+.paniol-edit-input {
+  width: 100%; padding: 8px 10px; background: white;
+  border: 1.5px solid #10b981; border-radius: 8px;
+  font-size: 13px; font-weight: 500; color: #0f172a;
+}
+.paniol-empty {
+  text-align: center; padding: 60px 20px; color: #94a3b8;
+}
+.paniol-login-wrap {
+  background: white; border-radius: 20px; padding: 40px 24px;
+  text-align: center; max-width: 380px; margin: 40px auto;
+  border: 1px solid #e2e8f0; box-shadow: 0 8px 32px rgba(0,0,0,.06);
+}
+    
   </style>
 </head>
 
@@ -633,13 +851,20 @@
 <div class="tabs-container">
   <div class="tabs">
     <div class="tab active" onclick="switchTab('rutinas')" id="tab-rutinas">
-      <span class="material-icons-round">assignment_turned_in</span> Rutinas
+      <span class="material-icons-round">assignment_turned_in</span>
+      <span class="tab-label">Rutinas</span>
     </div>
     <div class="tab" onclick="switchTab('tickets')" id="tab-tickets">
-      <span class="material-icons-round">build_circle</span> Tickets
+      <span class="material-icons-round">build_circle</span>
+      <span class="tab-label">Tickets</span>
     </div>
     <div class="tab" onclick="abrirModalInspeccion()" id="tab-inspeccion">
-      <span class="material-icons-round">search</span> Inspección
+      <span class="material-icons-round">search</span>
+      <span class="tab-label">Inspección</span>
+    </div>
+    <div class="tab" onclick="switchTab('paniol')" id="tab-paniol">
+      <span class="material-icons-round">inventory_2</span>
+      <span class="tab-label">Pañol</span>
     </div>
   </div>
 </div>
@@ -742,7 +967,7 @@
     userName: localStorage.getItem('userName') || '',
     abiertos: JSON.parse(localStorage.getItem('abiertos') || '{}')
   };
-
+let paniolData = [];  // [['M0001MAS', 'CADENA AC07404672...'], ...]
   app.datos = JSON.parse(localStorage.getItem('datos_' + app.linea) || '{}');
 
   function checkLogin() {
@@ -790,40 +1015,44 @@
   }
 
   function save() {
-    localStorage.setItem('linea', app.linea);
-    localStorage.setItem('tecnico', app.tecnico);
-    localStorage.setItem('supervisor', app.supervisor);
-    localStorage.setItem('producto', app.producto);
-    localStorage.setItem('datos_' + app.linea, JSON.stringify(app.datos));
-    localStorage.setItem('abiertos', JSON.stringify(app.abiertos));
-  }
+  localStorage.setItem('linea',     app.linea);
+  localStorage.setItem('tecnico',   app.tecnico);
+  localStorage.setItem('supervisor',app.supervisor);
+  localStorage.setItem('producto',  app.producto);
+  localStorage.setItem('datos_'     + app.linea, JSON.stringify(app.datos));
+  localStorage.setItem('repuestos_' + app.linea, JSON.stringify(app.repuestos || {}));
+  localStorage.setItem('abiertos',  JSON.stringify(app.abiertos));
+}
 
   function cambiarLinea(val) {
-    save();
-    app.linea = val;
-    app.datos = JSON.parse(localStorage.getItem('datos_' + app.linea) || '{}');
-    app.abiertos = {};
-    save();
-    render();
-  }
+  save();
+  app.linea = val;
+  app.datos     = JSON.parse(localStorage.getItem('datos_'     + app.linea) || '{}');
+  app.repuestos = JSON.parse(localStorage.getItem('repuestos_' + app.linea) || '{}');
+  app.abiertos  = {};
+  save();
+  render();
+}
 
   function switchTab(tab) {
     currentTab = tab;
     document.getElementById('tab-rutinas').classList.remove('active');
     document.getElementById('tab-tickets').classList.remove('active');
     document.getElementById('tab-inspeccion').classList.remove('active');
+    document.getElementById('tab-paniol').classList.remove('active');
     document.getElementById('tab-' + tab).classList.add('active');
     render();
   }
 
   function limpiarLinea() {
-    if (confirm("¿Estás seguro de que deseas limpiar la rutina actual?")) {
-      app.datos = {};
-      app.abiertos = {};
-      save();
-      render();
-    }
+  if (confirm("¿Estás seguro de que deseas limpiar la rutina actual?")) {
+    app.datos     = {};
+    app.repuestos = {};
+    app.abiertos  = {};
+    save();
+    render();
   }
+}
 
   function updateBtnGuardar() {
     const btn = document.getElementById('btnGuardar');
@@ -839,6 +1068,24 @@
     if (!app.datos[ei]) app.datos[ei] = {};
     if (!app.datos[ei][ci]) app.datos[ei][ci] = { m: false, c: '' };
     app.datos[ei][ci].m = !app.datos[ei][ci].m;
+
+    // Al desmarcar: limpiar comentario y repuestos asociados
+    if (!app.datos[ei][ci].m) {
+      app.datos[ei][ci].c = '';
+      // Limpiar textarea en DOM
+      const checkEl = document.querySelector(`[data-checkpoint="${ei}-${ci}"]`);
+      if (checkEl) {
+        const ta = checkEl.querySelector('textarea');
+        if (ta) ta.value = '';
+      }
+      // Limpiar repuestos
+      if (app.repuestos && app.repuestos[ei]) {
+        delete app.repuestos[ei][ci];
+        localStorage.setItem('repuestos_' + app.linea, JSON.stringify(app.repuestos));
+      }
+      renderBadges(ei, ci);
+    }
+
     vibratePhone();
     save();
     updateCheckpointDOM(ei, ci);
@@ -866,13 +1113,187 @@
     else equipoEl.classList.remove('abierto');
   }
 
+  async function cargarPaniol() {
+  // Intentar desde localStorage primero (cache de 24hs)
+  const cached = localStorage.getItem('paniol_cache');
+  const cachedTs = parseInt(localStorage.getItem('paniol_cache_ts') || '0');
+  const ahora = Date.now();
+  const UN_DIA = 24 * 60 * 60 * 1000;
+ 
+  if (cached && (ahora - cachedTs) < UN_DIA) {
+    try {
+      paniolData = JSON.parse(cached);
+      console.log(`Pañol desde cache: ${paniolData.length} ítems`);
+      return;
+    } catch (e) { /* ignorar, recargar */ }
+  }
+ 
+  // Cargar desde GitHub Pages
+  try {
+    const url = window.location.origin + window.location.pathname.replace(/[^/]*$/, '') + 'paniol_data.json';
+    const res  = await fetch(url);
+    if (!res.ok) throw new Error('no ok');
+    paniolData = await res.json();
+    localStorage.setItem('paniol_cache', JSON.stringify(paniolData));
+    localStorage.setItem('paniol_cache_ts', String(Date.now()));
+    console.log(`Pañol cargado: ${paniolData.length} ítems`);
+  } catch (e) {
+    console.warn('No se pudo cargar pañol_data.json:', e.message);
+    paniolData = [];
+  }
+}
+ 
+// ── 4. Funciones de búsqueda de repuesto ────────────────────────────────
+ 
+function buscarRepuesto(query, ei, ci) {
+  const input = document.getElementById(`rep-input-${ei}-${ci}`);
+  let lista   = document.getElementById(`rep-lista-${ei}-${ci}`);
+  if (!input || !lista) return;
+
+  // Mover al body para escapar de cualquier overflow/clip padre
+  if (lista.parentElement !== document.body) {
+    document.body.appendChild(lista);
+    lista = document.getElementById(`rep-lista-${ei}-${ci}`);
+  }
+
+  const q = query.trim();
+  if (q.length < 1) { lista.classList.remove('visible'); return; }
+
+  // Buscar resultados
+  const qUpper = q.toUpperCase();
+  const qLower = q.toLowerCase();
+  const tokens = qLower.split(/\s+/).filter(t => t.length >= 1);
+  const resultados = [];
+
+  for (const item of paniolData) {
+    const codigo = item[0].toUpperCase();
+    const desc   = item[1].toLowerCase();
+    const full   = codigo + ' ' + desc;
+    if (codigo === qUpper) { resultados.push({ item, score: 200 }); continue; }
+    if (tokens.length === 1 && codigo.startsWith(qUpper)) { resultados.push({ item, score: 150 }); continue; }
+    const matchCount = tokens.filter(t => full.includes(t)).length;
+    if (matchCount === tokens.length) resultados.push({ item, score: 50 + matchCount * 10 });
+    else if (matchCount > 0 && tokens.length > 1) resultados.push({ item, score: matchCount });
+  }
+
+  resultados.sort((a, b) => b.score - a.score);
+  const top8 = resultados.slice(0, 8);
+  if (!top8.length) { lista.classList.remove('visible'); return; }
+
+  lista.innerHTML = top8.map(({ item }) => {
+    const cod  = item[0].replace(/'/g, '&#39;');
+    const dsc  = item[1].replace(/'/g, '&#39;');
+    return `<div class="repuesto-item"
+      ontouchstart="event.preventDefault(); seleccionarRepuesto('${cod}','${dsc}',${ei},${ci})"
+      onmousedown="event.preventDefault(); seleccionarRepuesto('${cod}','${dsc}',${ei},${ci})">
+      <div class="repuesto-item-code">${item[0]}</div>
+      <div class="repuesto-item-desc">${item[1]}</div>
+    </div>`;
+  }).join('');
+
+  lista.classList.add('visible');
+
+  // Posicionamiento — visualViewport da coords reales con teclado abierto en mobile
+  requestAnimationFrame(() => {
+    const rect = input.getBoundingClientRect();
+
+    // Offset del visualViewport (teclado virtual desplaza el viewport en algunos browsers)
+    const vvOffsetTop  = (window.visualViewport ? window.visualViewport.offsetTop  : 0);
+    const vvOffsetLeft = (window.visualViewport ? window.visualViewport.offsetLeft : 0);
+    const vvHeight     = (window.visualViewport ? window.visualViewport.height : window.innerHeight);
+
+    const top   = rect.bottom + vvOffsetTop;
+    const left  = rect.left   + vvOffsetLeft;
+    const spaceBelow = vvHeight - rect.bottom;
+    const alturaMax  = Math.min(260, Math.max(spaceBelow - 12, 120));
+
+    lista.style.cssText = `
+      position: fixed;
+      left: ${Math.max(8, left)}px;
+      width: ${rect.width}px;
+      z-index: 999999;
+      max-height: ${alturaMax}px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.18);
+    `;
+
+    // Abrir arriba si no hay espacio abajo
+    if (spaceBelow < 150 && rect.top > spaceBelow) {
+      const alturaArriba = Math.min(260, Math.max(rect.top + vvOffsetTop - 12, 100));
+      lista.style.top    = 'auto';
+      lista.style.bottom = (vvHeight - rect.top + vvOffsetTop + 4) + 'px';
+      lista.style.maxHeight = alturaArriba + 'px';
+    } else {
+      lista.style.top    = top + 4 + 'px';
+      lista.style.bottom = 'auto';
+    }
+  });
+}
+ 
+function seleccionarRepuesto(codigo, desc, ei, ci) {
+  window._repuestoTouching = true;
+  if (!app.repuestos)       app.repuestos = {};
+  if (!app.repuestos[ei])   app.repuestos[ei] = {};
+  if (!Array.isArray(app.repuestos[ei][ci])) app.repuestos[ei][ci] = [];
+  // Evitar duplicado
+  if (app.repuestos[ei][ci].some(r => r.codigo === codigo)) {
+    const input = document.getElementById(`rep-input-${ei}-${ci}`);
+    const lista = document.getElementById(`rep-lista-${ei}-${ci}`);
+    if (input) input.value = '';
+    if (lista) lista.classList.remove('visible');
+    window._repuestoTouching = false;
+    return;
+  }
+  app.repuestos[ei][ci].push({ codigo, desc });
+  localStorage.setItem('repuestos_' + app.linea, JSON.stringify(app.repuestos));
+  const input = document.getElementById(`rep-input-${ei}-${ci}`);
+  const lista = document.getElementById(`rep-lista-${ei}-${ci}`);
+  if (input) input.value = '';
+  if (lista) lista.classList.remove('visible');
+  renderBadges(ei, ci);
+  setTimeout(() => { window._repuestoTouching = false; }, 300);
+}
+
+function limpiarRepuesto(ei, ci, idx) {
+  if (app.repuestos && app.repuestos[ei] && Array.isArray(app.repuestos[ei][ci])) {
+    app.repuestos[ei][ci].splice(idx, 1);
+    if (app.repuestos[ei][ci].length === 0) delete app.repuestos[ei][ci];
+    localStorage.setItem('repuestos_' + app.linea, JSON.stringify(app.repuestos));
+  }
+  renderBadges(ei, ci);
+  const input = document.getElementById(`rep-input-${ei}-${ci}`);
+  if (input) input.focus();
+}
+
+function renderBadges(ei, ci) {
+  const wrap = document.getElementById(`rep-badges-${ei}-${ci}`);
+  if (!wrap) return;
+  const lista = (app.repuestos && app.repuestos[ei] && Array.isArray(app.repuestos[ei][ci]))
+    ? app.repuestos[ei][ci] : [];
+  if (!lista.length) { wrap.innerHTML = ''; return; }
+  wrap.innerHTML = lista.map((r, idx) => `
+    <div class="repuesto-badge visible" style="margin-top:${idx === 0 ? '8px' : '6px'};">
+      <div class="repuesto-badge-info">
+        <div class="repuesto-badge-code">${r.codigo}</div>
+        <div class="repuesto-badge-desc">${r.desc}</div>
+      </div>
+      <button class="repuesto-badge-del" onmousedown="limpiarRepuesto(${ei},${ci},${idx})" type="button">
+        <span class="material-icons-round" style="font-size:20px; pointer-events:none;">delete</span>
+      </button>
+    </div>`).join('');
+}
+
   function render() {
     if (!checkLogin()) return;
 
     if (currentTab === 'tickets') {
-      let ht = `<div class="section login-status" style="display:flex; justify-content:space-between; align-items:center;">
-        <div style="font-weight:700; color:var(--primary); display:flex; align-items:center; gap:10px;"><span class="material-icons-round">account_circle</span> ${app.userEmail}</div>
-        <button onclick="app.userEmail=''; app.userName=''; save(); checkLogin();" style="flex:none; padding:8px 16px; background:#f1f5f9; font-size:13px; font-weight:700; color:#475569; border-radius:10px; min-width:auto;"><span class="material-icons-round" style="font-size:18px;">logout</span> Salir</button>
+      let ht = `<div class="section login-status">
+        <div class="login-email"><span class="material-icons-round">account_circle</span><span class="login-email-text">${app.userEmail}</span></div>
+        <button class="login-btn-salir" onclick="app.userEmail=''; app.userName=''; save(); checkLogin();"><span class="material-icons-round" style="font-size:18px;">logout</span> Salir</button>
       </div>`;
 
       ht += `<div class="section">
@@ -907,12 +1328,17 @@
       return;
     }
 
+    if (currentTab === 'paniol') {
+      renderPaniol();
+      return;
+    }
+
     const puedeCargarRutinas = EMAILS_RUTINAS.includes(app.userEmail.toLowerCase());
 
     if (!puedeCargarRutinas) {
-      let html = `<div class="section login-status" style="display:flex; justify-content:space-between; align-items:center;">
-        <div style="font-weight:700; color:var(--primary); display:flex; align-items:center; gap:10px;"><span class="material-icons-round">account_circle</span> ${app.userEmail}</div>
-        <button onclick="app.userEmail=''; app.userName=''; save(); checkLogin(); render();" style="flex:none; padding:8px 16px; background:#f1f5f9; font-size:13px; font-weight:700; color:#475569; border-radius:10px; min-width:auto;"><span class="material-icons-round" style="font-size:18px;">logout</span> Salir</button>
+      let html = `<div class="section login-status">
+        <div class="login-email"><span class="material-icons-round">account_circle</span><span class="login-email-text">${app.userEmail}</span></div>
+        <button class="login-btn-salir" onclick="app.userEmail=''; app.userName=''; save(); checkLogin(); render();"><span class="material-icons-round" style="font-size:18px;">logout</span> Salir</button>
       </div>
       <div class="section" style="text-align:center; padding:60px 20px;">
         <span class="material-icons-round" style="font-size:64px; color:#cbd5e1; display:block; margin-bottom:20px;">lock</span>
@@ -926,9 +1352,9 @@
       return;
     }
 
-    let html = `<div class="section login-status" style="display:flex; justify-content:space-between; align-items:center;">
-      <div style="font-weight:700; color:var(--primary); display:flex; align-items:center; gap:10px;"><span class="material-icons-round">account_circle</span> ${app.userEmail}</div>
-      <button onclick="app.userEmail=''; app.userName=''; save(); checkLogin(); render();" style="flex:none; padding:8px 16px; background:#f1f5f9; font-size:13px; font-weight:700; color:#475569; border-radius:10px; min-width:auto;"><span class="material-icons-round" style="font-size:18px;">logout</span> Salir</button>
+    let html = `<div class="section login-status">
+      <div class="login-email"><span class="material-icons-round">account_circle</span><span class="login-email-text">${app.userEmail}</span></div>
+      <button class="login-btn-salir" onclick="app.userEmail=''; app.userName=''; save(); checkLogin(); render();"><span class="material-icons-round" style="font-size:18px;">logout</span> Salir</button>
     </div>`;
 
     const equipos = LINEAS[app.linea] || [];
@@ -987,8 +1413,36 @@
             </label>
             <div class="toggle-label">${d.m ? 'Falla' : 'OK'}</div>
           </div>
-          <div class="check-comment">
+           <div class="check-comment">
             <textarea onchange="updateComment(${ei},${ci},this.value)" placeholder="Describa el inconveniente encontrado aquí claramente...">${d.c}</textarea>
+            <div class="repuesto-wrap">
+              <span class="repuesto-label">🔧 Repuesto necesario (opcional)</span>
+              <div class="repuesto-input-row">
+                <input class="repuesto-input" id="rep-input-${ei}-${ci}"
+                  type="text" autocomplete="off"
+                  placeholder="Buscá por código o palabras clave..."
+                  oninput="buscarRepuesto(this.value, ${ei}, ${ci})"
+                  onfocus="buscarRepuesto(this.value, ${ei}, ${ci})"
+                  onblur="setTimeout(() => { if(!window._repuestoTouching) { const l = document.getElementById('rep-lista-${ei}-${ci}'); if(l) l.classList.remove('visible'); }}, 250)">
+              </div>
+              <div class="repuesto-sugerencias" id="rep-lista-${ei}-${ci}"></div>
+              <div id="rep-badges-${ei}-${ci}">
+                ${(() => {
+                  const lista = (app.repuestos && app.repuestos[ei] && Array.isArray(app.repuestos[ei][ci]))
+                    ? app.repuestos[ei][ci] : [];
+                  return lista.map((r, idx) => `
+                    <div class="repuesto-badge visible" style="margin-top:${idx === 0 ? '8px' : '6px'};">
+                      <div class="repuesto-badge-info">
+                        <div class="repuesto-badge-code">${r.codigo}</div>
+                        <div class="repuesto-badge-desc">${r.desc}</div>
+                      </div>
+                      <button class="repuesto-badge-del" onmousedown="limpiarRepuesto(${ei},${ci},${idx})" type="button">
+                        <span class="material-icons-round" style="font-size:20px; pointer-events:none;">delete</span>
+                      </button>
+                    </div>`).join('');
+                })()}
+              </div>
+            </div>
           </div>
         </div>`;
       });
@@ -1081,22 +1535,29 @@
   }
 
   function buildPayload() {
-    const equipos = LINEAS[app.linea] || [];
-    return {
-      fecha: new Date().toISOString(),
-      linea: app.linea,
-      tecnico: app.tecnico,
-      supervisor: app.supervisor,
-      producto: app.producto,
-      equipos: equipos.map((eq, ei) => ({
-        nombre: eq.nombre,
-        checks: eq.checks.map((cp, ci) => {
-          const d = (app.datos[ei] && app.datos[ei][ci]) || { m: false, c: '' };
-          return { texto: cp, marcado: d.m, comentario: d.c };
-        })
-      }))
-    };
-  }
+  const equipos = LINEAS[app.linea] || [];
+  return {
+    fecha:     new Date().toISOString(),
+    linea:     app.linea,
+    tecnico:   app.tecnico,
+    supervisor:app.supervisor,
+    producto:  app.producto,
+    equipos:   equipos.map((eq, ei) => ({
+      nombre: eq.nombre,
+      checks: eq.checks.map((cp, ci) => {
+        const d = (app.datos[ei] && app.datos[ei][ci]) || { m: false, c: '' };
+        const rep = (app.repuestos && app.repuestos[ei] && Array.isArray(app.repuestos[ei][ci]))
+          ? app.repuestos[ei][ci] : [];
+        return {
+          texto:    cp,
+          marcado:  d.m,
+          comentario: d.c,
+          repuestos: rep  // array de { codigo, desc }
+        };
+      })
+    }))
+  };
+}
 
   function generarReporte(payload) {
     const fecha = new Date(payload.fecha);
@@ -1202,11 +1663,53 @@
       })
     };
     sendOrQueue(payloadSheet);
+
+    // ── Enviar pedidos de repuestos al Sheet (hoja Pedidos_Repuestos) ──
+    const equipos = LINEAS[app.linea] || [];
+    const pedidosRepuestos = [];
+    equipos.forEach((eq, ei) => {
+      eq.checks.forEach((cp, ci) => {
+        const reps = (app.repuestos && app.repuestos[ei] && Array.isArray(app.repuestos[ei][ci]))
+          ? app.repuestos[ei][ci] : [];
+        reps.forEach(rep => {
+          pedidosRepuestos.push({
+            semana:      getSemanaISO(),
+            fecha:       payload.fecha,
+            linea:       app.linea,
+            equipo:      eq.nombre,
+            checkpoint:  cp,
+            tecnico:     app.tecnico,
+            supervisor:  app.supervisor,
+            codigo:      rep.codigo,
+            descripcion: rep.desc,
+            cantidad:    '1',
+            nota:        '',
+            estado:      'Pendiente'
+          });
+        });
+      });
+    });
+
+    if (pedidosRepuestos.length > 0) {
+      const payloadPedidos = { tipo: 'pedidosRepuestos', pedidos: pedidosRepuestos };
+      // Guardar en cache local para el Pañol
+      const cachedPedidos = JSON.parse(localStorage.getItem('paniol_pedidos_cache') || '[]');
+      cachedPedidos.push(...pedidosRepuestos);
+      localStorage.setItem('paniol_pedidos_cache', JSON.stringify(cachedPedidos));
+      // Enviar al Sheet (sin bloquear)
+      fetch(apiUrl, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'payload=' + encodeURIComponent(JSON.stringify(payloadPedidos))
+      }).catch(() => {});
+    }
+
     generarReporte(payload);
     app.producto = '';
     app.tecnico = '';
     app.supervisor = '';
     app.datos = {};
+    app.repuestos = {};
     app.abiertos = {};
     save();
     render();
@@ -1436,9 +1939,399 @@
     toast._timeout = setTimeout(() => { toast.style.opacity = '0'; }, 3000);
   }
 
-  render();
-  updateOfflineBanner();
-  processQueue();
+  // Cargar datos de repuestos de la línea actual
+    app.repuestos = JSON.parse(localStorage.getItem('repuestos_' + app.linea) || '{}');
+ 
+    render();
+    updateOfflineBanner();
+    processQueue();
+    cargarPaniol();
+
+    // Reposicionar cualquier dropdown de repuesto visible cuando el teclado aparece/desaparece
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', () => {
+        const listas = document.querySelectorAll('.repuesto-sugerencias.visible');
+        listas.forEach(lista => {
+          const idParts = lista.id.replace('rep-lista-', '').split('-');
+          const ei = idParts[0], ci = idParts[1];
+          const input = document.getElementById(`rep-input-${ei}-${ci}`);
+          if (!input) return;
+          const rect      = input.getBoundingClientRect();
+          const vvOffTop  = window.visualViewport.offsetTop;
+          const vvOffLeft = window.visualViewport.offsetLeft;
+          const vvH       = window.visualViewport.height;
+          const spaceBelow = vvH - rect.bottom;
+          lista.style.left = Math.max(8, rect.left + vvOffLeft) + 'px';
+          lista.style.width = rect.width + 'px';
+          if (spaceBelow < 150 && rect.top > spaceBelow) {
+            lista.style.top    = 'auto';
+            lista.style.bottom = (vvH - rect.top + vvOffTop + 4) + 'px';
+          } else {
+            lista.style.top    = (rect.bottom + vvOffTop + 4) + 'px';
+            lista.style.bottom = 'auto';
+          }
+        });
+      });
+    }
+
+  // ── MÓDULO PAÑOL ─────────────────────────────────────────────────────────
+
+  const EMAILS_PANIOL = [
+    'hectoralegre.pilaresca@gmail.com'
+    // Agregar más pañoleros acá cuando sea necesario
+  ];
+
+  // Estado pañol (sesión en memoria, no persiste — es deliberado)
+  let paniolState = {
+    loggedIn: false,
+    email: '',
+    filtroLinea: '',
+    filtroEquipo: '',
+    filtroTecnico: '',
+    editandoIdx: null,
+    pedidos: []   // cache local de la semana actual
+  };
+
+  // ── Cargar pedidos desde Google Sheet via Apps Script ──────────────────
+  async function cargarPedidosPaniol() {
+    try {
+      const url = apiUrl + '?action=getPedidos&semana=' + getSemanaISO();
+      const res  = await fetch(url);
+      const json = await res.json();
+      if (json && Array.isArray(json.pedidos)) {
+        paniolState.pedidos = json.pedidos;
+      }
+    } catch (e) {
+      // Si falla (modo offline o Apps Script no implementado aún) usa cache local
+      const cached = localStorage.getItem('paniol_pedidos_cache');
+      if (cached) paniolState.pedidos = JSON.parse(cached);
+    }
+    renderPaniol();
+  }
+
+  function getSemanaISO() {
+    const now = new Date();
+    const jan4 = new Date(now.getFullYear(), 0, 4);
+    const dayOfYear = Math.floor((now - jan4) / 86400000);
+    const weekNum = Math.ceil((dayOfYear + jan4.getDay() + 1) / 7);
+    return now.getFullYear() + '-W' + String(weekNum).padStart(2, '0');
+  }
+
+  // ── Guardar edición de pedido ──────────────────────────────────────────
+  async function guardarEdicionPedido(idx) {
+    const p = paniolState.pedidos[idx];
+    const cantInput  = document.getElementById('paniol-edit-cant');
+    const codInput   = document.getElementById('paniol-edit-cod');
+    const descInput  = document.getElementById('paniol-edit-desc');
+    const notaInput  = document.getElementById('paniol-edit-nota');
+    const estadoSel  = document.getElementById('paniol-edit-estado');
+
+    if (cantInput)  p.cantidad  = cantInput.value.trim()  || p.cantidad;
+    if (codInput)   p.codigo    = codInput.value.trim()   || p.codigo;
+    if (descInput)  p.descripcion = descInput.value.trim() || p.descripcion;
+    if (notaInput)  p.nota      = notaInput.value.trim();
+    if (estadoSel)  p.estado    = estadoSel.value;
+
+    paniolState.pedidos[idx] = p;
+    paniolState.editandoIdx  = null;
+
+    // Persistir localmente
+    localStorage.setItem('paniol_pedidos_cache', JSON.stringify(paniolState.pedidos));
+
+    // Enviar al Apps Script
+    try {
+      await fetch(apiUrl, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'payload=' + encodeURIComponent(JSON.stringify({
+          tipo: 'editarPedido',
+          editor: paniolState.email,
+          pedido: p
+        }))
+      });
+    } catch (e) { /* offline, ya guardó local */ }
+
+    renderPaniol();
+  }
+
+  // ── Descarga Excel de la semana ───────────────────────────────────────
+  function descargarExcelPaniol() {
+    const pedidos = pedidosFiltrados();
+    if (!pedidos.length) { mostrarToast('No hay pedidos para descargar.', 'warning'); return; }
+
+    // Construir CSV (Excel puede abrirlo directamente)
+    const sep = ';';
+    const bom = '\uFEFF';
+    const cabecera = ['Semana','Fecha','Línea','Equipo','Técnico','Código','Descripción','Cantidad','Nota','Estado'].join(sep);
+    const filas = pedidos.map(p => [
+      p.semana || getSemanaISO(),
+      p.fecha  || '',
+      p.linea  || '',
+      p.equipo || '',
+      p.tecnico || '',
+      p.codigo || '',
+      (p.descripcion || '').replace(/;/g, ','),
+      p.cantidad || '1',
+      (p.nota || '').replace(/;/g, ','),
+      p.estado || 'Pendiente'
+    ].join(sep));
+
+    const csv  = bom + cabecera + '\n' + filas.join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+    const a    = document.createElement('a');
+    a.href     = URL.createObjectURL(blob);
+    a.download = `pedidos-paniol-${getSemanaISO()}.csv`;
+    a.click();
+    mostrarToast('✓ Descarga iniciada.', 'success');
+  }
+
+  // ── Filtros ─────────────────────────────────────────────────────────────
+  function pedidosFiltrados() {
+    return paniolState.pedidos.filter(p => {
+      if (paniolState.filtroLinea   && p.linea    !== paniolState.filtroLinea)   return false;
+      if (paniolState.filtroEquipo  && p.equipo   !== paniolState.filtroEquipo)  return false;
+      if (paniolState.filtroTecnico && p.tecnico  !== paniolState.filtroTecnico) return false;
+      return true;
+    });
+  }
+
+  function onPaniolFiltro(campo, val) {
+    paniolState[campo] = val;
+    if (campo === 'filtroLinea') {
+      paniolState.filtroEquipo = '';
+    }
+    paniolState.editandoIdx = null;
+    renderPaniol();
+  }
+
+  // ── Render principal Pañol ─────────────────────────────────────────────
+  function renderPaniol() {
+    const main = document.getElementById('main');
+    if (!main) return;
+
+    // ── Login Pañol ──
+    if (!paniolState.loggedIn) {
+      main.innerHTML = `
+        <div class="paniol-login-wrap">
+          <div style="background:#ecfdf5; width:72px; height:72px; border-radius:50%;
+                      display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
+            <span class="material-icons-round" style="font-size:36px; color:#10b981;">inventory_2</span>
+          </div>
+          <h2 style="font-weight:800; font-size:22px; margin-bottom:8px;">Acceso Pañol</h2>
+          <p style="color:#64748b; font-size:14px; margin-bottom:28px;">
+            Ingresá con tu correo habilitado para ver y gestionar los pedidos de repuestos.
+          </p>
+          <div class="field" style="margin-bottom:14px; text-align:left;">
+            <label class="label">Correo electrónico</label>
+            <input type="email" id="paniol-email-input"
+              placeholder="tu_correo@gmail.com"
+              onkeydown="if(event.key==='Enter') loginPaniol()"
+              style="margin-bottom:0;">
+          </div>
+          <button class="btn-guardar" onclick="loginPaniol()" style="width:100%; margin-top:4px;">
+            <span class="material-icons-round">login</span> Ingresar
+          </button>
+          <p style="font-size:12px; color:#94a3b8; margin-top:20px;">
+            Solo emails autorizados por el supervisor de planta.
+          </p>
+        </div>`;
+      return;
+    }
+
+    // ── Vista principal Pañol ──
+    const pedidos = pedidosFiltrados();
+
+    // Opciones para filtros
+    const todasLineas   = [...new Set(paniolState.pedidos.map(p => p.linea).filter(Boolean))].sort();
+    const todosEquipos  = [...new Set(
+      paniolState.pedidos
+        .filter(p => !paniolState.filtroLinea || p.linea === paniolState.filtroLinea)
+        .map(p => p.equipo).filter(Boolean)
+    )].sort();
+    const todosTecnicos = [...new Set(paniolState.pedidos.map(p => p.tecnico).filter(Boolean))].sort();
+
+    let html = `
+    <div class="paniol-header-badge">
+      <div style="flex:1; min-width:0;">
+        <div style="font-size:18px; font-weight:800; display:flex; align-items:center; gap:8px;">
+          <span class="material-icons-round" style="font-size:20px;">inventory_2</span>
+          Pedidos de Pañol
+        </div>
+        <div style="font-size:11px; opacity:.75; margin-top:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+          Semana ${getSemanaISO()} · ${paniolState.email}
+        </div>
+      </div>
+      <div style="display:flex; gap:6px; align-items:center; flex-shrink:0; margin-left:12px;">
+        <button onclick="cargarPedidosPaniol()" title="Actualizar"
+          style="background:rgba(255,255,255,0.2); border:none; border-radius:10px;
+                 width:40px; height:40px; padding:0; color:white; cursor:pointer;
+                 display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <span class="material-icons-round" style="font-size:20px;">refresh</span>
+        </button>
+        <button onclick="descargarExcelPaniol()" title="Descargar Excel"
+          style="background:rgba(255,255,255,0.2); border:none; border-radius:10px;
+                 height:40px; padding:0 14px; color:white; font-weight:700; font-size:13px; cursor:pointer;
+                 display:flex; align-items:center; gap:6px; flex-shrink:0; white-space:nowrap;">
+          <span class="material-icons-round" style="font-size:18px;">download</span>
+          <span class="paniol-excel-label">Excel</span>
+        </button>
+        <button onclick="paniolState.loggedIn=false; paniolState.email=''; renderPaniol();" title="Cerrar sesión"
+          style="background:rgba(255,255,255,0.15); border:none; border-radius:10px;
+                 width:40px; height:40px; padding:0; color:white; cursor:pointer;
+                 display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <span class="material-icons-round" style="font-size:18px;">logout</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="paniol-filtros">
+      <div class="field">
+        <label class="label">Línea</label>
+        <select onchange="onPaniolFiltro('filtroLinea', this.value)">
+          <option value="">Todas</option>
+          ${todasLineas.map(l => `<option ${paniolState.filtroLinea === l ? 'selected' : ''} value="${l}">${l}</option>`).join('')}
+        </select>
+      </div>
+      <div class="field">
+        <label class="label">Equipo</label>
+        <select onchange="onPaniolFiltro('filtroEquipo', this.value)">
+          <option value="">Todos</option>
+          ${todosEquipos.map(e => `<option ${paniolState.filtroEquipo === e ? 'selected' : ''} value="${e}">${e}</option>`).join('')}
+        </select>
+      </div>
+      <div class="field">
+        <label class="label">Técnico</label>
+        <select onchange="onPaniolFiltro('filtroTecnico', this.value)">
+          <option value="">Todos</option>
+          ${todosTecnicos.map(t => `<option ${paniolState.filtroTecnico === t ? 'selected' : ''} value="${t}">${t}</option>`).join('')}
+        </select>
+      </div>
+    </div>`;
+
+    if (!pedidos.length) {
+      html += `<div class="paniol-table-wrap">
+        <div class="paniol-empty">
+          <span class="material-icons-round" style="font-size:48px; display:block; margin-bottom:12px;">inventory_2</span>
+          <p style="font-size:15px; font-weight:600;">Sin pedidos para esta semana</p>
+          <p style="font-size:13px; margin-top:6px;">Los pedidos generados en las rutinas aparecerán acá.</p>
+        </div>
+      </div>`;
+    } else {
+      html += `<div class="paniol-table-wrap" style="overflow-x:auto;">
+        <table class="paniol-table">
+          <thead>
+            <tr>
+              <th>Línea / Equipo</th>
+              <th>Técnico</th>
+              <th>Código</th>
+              <th>Descripción</th>
+              <th>Cant.</th>
+              <th>Nota</th>
+              <th>Estado</th>
+              <th style="width:48px;"></th>
+            </tr>
+          </thead>
+          <tbody>`;
+
+      pedidos.forEach((p, i) => {
+        const realIdx = paniolState.pedidos.indexOf(p);
+        const esEdicion = paniolState.editandoIdx === realIdx;
+        const estadoClass = {
+          'Pendiente': 'paniol-estado-pendiente',
+          'Entregado':  'paniol-estado-entregado',
+          'Observado':  'paniol-estado-observado',
+          'Vencido':    'paniol-estado-vencido'
+        }[p.estado] || 'paniol-estado-pendiente';
+
+        if (esEdicion) {
+          html += `<tr class="paniol-edit-row">
+            <td>
+              <div class="paniol-badge-linea">${p.linea || '—'}</div>
+              <div style="font-size:12px; color:#64748b; margin-top:4px;">${p.equipo || ''}</div>
+            </td>
+            <td style="font-size:12px;">${p.tecnico || '—'}</td>
+            <td><input class="paniol-edit-input" id="paniol-edit-cod"
+              value="${p.codigo || ''}" style="width:110px;"></td>
+            <td><input class="paniol-edit-input" id="paniol-edit-desc"
+              value="${p.descripcion || ''}" style="min-width:160px;"></td>
+            <td><input class="paniol-edit-input" id="paniol-edit-cant"
+              value="${p.cantidad || '1'}" style="width:54px;"></td>
+            <td><input class="paniol-edit-input" id="paniol-edit-nota"
+              value="${p.nota || ''}" style="min-width:120px;"></td>
+            <td>
+              <select class="paniol-edit-input" id="paniol-edit-estado" style="width:110px;">
+                <option ${p.estado==='Pendiente' ?'selected':''}>Pendiente</option>
+                <option ${p.estado==='Entregado' ?'selected':''}>Entregado</option>
+                <option ${p.estado==='Observado' ?'selected':''}>Observado</option>
+                <option ${p.estado==='Vencido'   ?'selected':''}>Vencido</option>
+              </select>
+            </td>
+            <td>
+              <button onclick="guardarEdicionPedido(${realIdx})"
+                style="background:#10b981; color:white; border:none; border-radius:8px;
+                       padding:6px 10px; font-size:12px; font-weight:700; cursor:pointer; white-space:nowrap;">
+                <span class="material-icons-round" style="font-size:16px; vertical-align:middle;">check</span>
+              </button>
+              <button onclick="paniolState.editandoIdx=null; renderPaniol();"
+                style="background:#f1f5f9; color:#475569; border:none; border-radius:8px;
+                       padding:6px 8px; font-size:12px; font-weight:700; cursor:pointer; margin-top:4px;">
+                <span class="material-icons-round" style="font-size:16px; vertical-align:middle;">close</span>
+              </button>
+            </td>
+          </tr>`;
+        } else {
+          html += `<tr>
+            <td>
+              <div class="paniol-badge-linea">${p.linea || '—'}</div>
+              <div style="font-size:12px; color:#64748b; margin-top:4px;">${p.equipo || ''}</div>
+            </td>
+            <td style="font-size:12px;">${p.tecnico || '—'}</td>
+            <td style="font-weight:800; color:#059669; font-size:12px;">${p.codigo || '—'}</td>
+            <td style="max-width:200px;">${p.descripcion || '—'}</td>
+            <td style="font-weight:700; text-align:center;">${p.cantidad || '1'}</td>
+            <td style="font-size:12px; color:#64748b; font-style:italic;">${p.nota || ''}</td>
+            <td><span class="paniol-badge-estado ${estadoClass}">${p.estado || 'Pendiente'}</span></td>
+            <td>
+              <button onclick="paniolState.editandoIdx=${realIdx}; renderPaniol();"
+                style="background:#f1f5f9; color:#475569; border:none; border-radius:8px;
+                       width:34px; height:34px; padding:0; cursor:pointer;
+                       display:flex; align-items:center; justify-content:center;">
+                <span class="material-icons-round" style="font-size:16px;">edit</span>
+              </button>
+            </td>
+          </tr>`;
+        }
+      });
+
+      html += `</tbody></table></div>`;
+    }
+
+    main.innerHTML = html;
+  }
+
+  // ── Login Pañol ──────────────────────────────────────────────────────────
+  function loginPaniol() {
+    const emailInput = document.getElementById('paniol-email-input');
+    if (!emailInput) return;
+    const em = emailInput.value.trim().toLowerCase();
+    if (!em.includes('@')) {
+      mostrarToast('Ingresá un email válido.', 'warning');
+      return;
+    }
+    if (!EMAILS_PANIOL.includes(em)) {
+      mostrarToast('⚠ Email no autorizado para Pañol.', 'error');
+      return;
+    }
+    paniolState.loggedIn = true;
+    paniolState.email    = em;
+    paniolState.pedidos  = [];
+    // Cargar pedidos inmediatamente
+    const cached = localStorage.getItem('paniol_pedidos_cache');
+    if (cached) {
+      try { paniolState.pedidos = JSON.parse(cached); } catch(e) {}
+    }
+    cargarPedidosPaniol();
+  }
 </script>
 </body>
 </html>
