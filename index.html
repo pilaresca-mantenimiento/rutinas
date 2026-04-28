@@ -775,6 +775,42 @@
 }
 .repuesto-badge-del:active { background: #fee2e2; }
 
+/* Contador de cantidad dentro del badge */
+.repuesto-qty {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-left: 2px solid #10b981;
+  flex-shrink: 0;
+}
+.repuesto-qty-btn {
+  background: #f0fdf4;
+  border: none;
+  color: #059669;
+  font-size: 20px;
+  font-weight: 700;
+  width: 36px;
+  height: 100%;
+  min-height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background .15s;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1;
+}
+.repuesto-qty-btn:active { background: #dcfce7; }
+.repuesto-qty-num {
+  font-size: 15px;
+  font-weight: 800;
+  color: #065f46;
+  min-width: 28px;
+  text-align: center;
+  user-select: none;
+}
+
 /* ── PAÑOL ── */
 .paniol-header-badge {
   background: linear-gradient(135deg, #064e3b, #065f46);
@@ -929,7 +965,7 @@
 <main id="main"></main>
 
 <script>
-  const apiUrl = 'https://script.google.com/macros/s/AKfycbzS-2rOqZBEgl9R_V__ot-EuUIaL_099s0eVpSL8p90cm_VQ6xrG71TzSaO0hGVYSaQOg/exec';
+  const apiUrl = 'https://script.google.com/macros/s/AKfycbyKv8gno97Dh64E5sR_x81TcHH2-m_nPSd5AVXcFwAKJtwl73GAyx1KQAi36QzN_OIK/exec';
 
   const EMAILS_RUTINAS = [
     'diego.sanchez@pilaresca.com.ar', 'dariogamba.pilaresca@gmail.com', 'francopaez.pilaresca@gmail.com',
@@ -1248,7 +1284,7 @@ function seleccionarRepuesto(codigo, desc, ei, ci) {
     window._repuestoTouching = false;
     return;
   }
-  app.repuestos[ei][ci].push({ codigo, desc });
+  app.repuestos[ei][ci].push({ codigo, desc, cantidad: 1 });
   localStorage.setItem('repuestos_' + app.linea, JSON.stringify(app.repuestos));
   const input = document.getElementById(`rep-input-${ei}-${ci}`);
   const lista = document.getElementById(`rep-lista-${ei}-${ci}`);
@@ -1269,6 +1305,18 @@ function limpiarRepuesto(ei, ci, idx) {
   if (input) input.focus();
 }
 
+function cambiarCantidad(ei, ci, idx, delta) {
+  if (!app.repuestos?.[ei] || !Array.isArray(app.repuestos[ei][ci])) return;
+  const r = app.repuestos[ei][ci][idx];
+  if (!r) return;
+  r.cantidad = Math.max(1, (r.cantidad || 1) + delta);
+  app.repuestos[ei][ci][idx] = r;
+  localStorage.setItem('repuestos_' + app.linea, JSON.stringify(app.repuestos));
+  // Actualizar solo el número sin re-renderizar todo el badge
+  const numEl = document.getElementById(`rep-qty-${ei}-${ci}-${idx}`);
+  if (numEl) numEl.textContent = r.cantidad;
+}
+
 function renderBadges(ei, ci) {
   const wrap = document.getElementById(`rep-badges-${ei}-${ci}`);
   if (!wrap) return;
@@ -1281,7 +1329,21 @@ function renderBadges(ei, ci) {
         <div class="repuesto-badge-code">${r.codigo}</div>
         <div class="repuesto-badge-desc">${r.desc}</div>
       </div>
-      <button class="repuesto-badge-del" onmousedown="limpiarRepuesto(${ei},${ci},${idx})" type="button">
+      <div class="repuesto-qty">
+        <button class="repuesto-qty-btn"
+          onmousedown="event.preventDefault(); cambiarCantidad(${ei},${ci},${idx},-1)"
+          ontouchstart="event.preventDefault(); cambiarCantidad(${ei},${ci},${idx},-1)"
+          type="button">−</button>
+        <span class="repuesto-qty-num" id="rep-qty-${ei}-${ci}-${idx}">${r.cantidad || 1}</span>
+        <button class="repuesto-qty-btn"
+          onmousedown="event.preventDefault(); cambiarCantidad(${ei},${ci},${idx},1)"
+          ontouchstart="event.preventDefault(); cambiarCantidad(${ei},${ci},${idx},1)"
+          type="button">+</button>
+      </div>
+      <button class="repuesto-badge-del"
+        onmousedown="event.preventDefault(); limpiarRepuesto(${ei},${ci},${idx})"
+        ontouchstart="event.preventDefault(); limpiarRepuesto(${ei},${ci},${idx})"
+        type="button">
         <span class="material-icons-round" style="font-size:20px; pointer-events:none;">delete</span>
       </button>
     </div>`).join('');
@@ -1549,10 +1611,10 @@ function renderBadges(ei, ci) {
         const rep = (app.repuestos && app.repuestos[ei] && Array.isArray(app.repuestos[ei][ci]))
           ? app.repuestos[ei][ci] : [];
         return {
-          texto:    cp,
-          marcado:  d.m,
+          texto:      cp,
+          marcado:    d.m,
           comentario: d.c,
-          repuestos: rep  // array de { codigo, desc }
+          repuestos:  rep  // [ { codigo, desc, cantidad }, ... ]
         };
       })
     }))
@@ -1682,7 +1744,7 @@ function renderBadges(ei, ci) {
             supervisor:  app.supervisor,
             codigo:      rep.codigo,
             descripcion: rep.desc,
-            cantidad:    '1',
+            cantidad:    String(rep.cantidad || 1),
             nota:        '',
             estado:      'Pendiente'
           });
