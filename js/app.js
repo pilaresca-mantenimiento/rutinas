@@ -1,4 +1,4 @@
-const apiUrl = 'https://script.google.com/macros/s/AKfycbyKv8gno97Dh64E5sR_x81TcHH2-m_nPSd5AVXcFwAKJtwl73GAyx1KQAi36QzN_OIK/exec';
+const apiUrl = 'https://script.google.com/macros/s/AKfycbzS-2rOqZBEgl9R_V__ot-EuUIaL_099s0eVpSL8p90cm_VQ6xrG71TzSaO0hGVYSaQOg/exec';
 
 // ── INICIALIZACIÓN DE MODO OSCURO ──
 const savedTheme = localStorage.getItem('pmp_theme') || 'light';
