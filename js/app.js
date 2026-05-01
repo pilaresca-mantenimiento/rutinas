@@ -4,6 +4,7 @@ const apiUrl = 'https://script.google.com/macros/s/AKfycbzS-2rOqZBEgl9R_V__ot-Eu
 const savedTheme = localStorage.getItem('pmp_theme') || 'light';
 document.documentElement.setAttribute('data-theme', savedTheme);
 
+// ── INICIALIZACIÓN DE MODO OSCURO ──
 function toggleTheme() {
   const currentTheme = document.documentElement.getAttribute('data-theme');
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
